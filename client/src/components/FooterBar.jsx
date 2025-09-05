@@ -1,5 +1,5 @@
 import { FaInstagram } from 'react-icons/fa';
-import styles from "../css/styles.module.css";
+import styles from "../css/footer.module.css";
 
 const FooterBar = () => {
   const submitEmailAddress = () => {

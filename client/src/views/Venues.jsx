@@ -1,6 +1,6 @@
-import styles from "../css/styles.module.css"
+import styles from "../css/core.module.css"
 
-const Map = () => {
+const Venues = () => {
   return (
       <div className={styles.pageContent}>
         <h1> Venues in London </h1>
@@ -8,4 +8,4 @@ const Map = () => {
     )
 }
 
-export default Map
+export default Venues

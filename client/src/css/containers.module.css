@@ -1,9 +1,25 @@
+/* Page Header */
+.header{
+  text-align: center;
+}
+.header h1{
+  font-size: 3em;
+  margin-bottom: 0;
+}
+.header h3{
+  font-size: 1.6em;
+  font-style: italic;
+  font-weight: 400;
+}
+/* Artist/Venue Content */
 .artistsContainer{
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
+  align-items: center;
+  justify-content: center;
   padding-top: 1em;
   gap: 1.5em;
 }
@@ -24,5 +40,9 @@
 }
 .containerText{
   display: flex;
+  gap: 0.5em;
   flex-direction: column;
+}
+.containerText a{
+  font-size: 1.4em;
 }

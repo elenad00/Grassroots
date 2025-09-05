@@ -1,5 +1,5 @@
 import {ValueContainer} from "../components/ValueContainers"
-import styles from "../css/styles.module.css"
+import styles from "../css/homepage.module.css"
 
 const Home = () => {
   return (

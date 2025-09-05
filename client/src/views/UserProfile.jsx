@@ -1,4 +1,4 @@
-import styles from "../css/styles.module.css"
+import styles from "../css/core.module.css"
 
 const UserProfile = () => {
   return (

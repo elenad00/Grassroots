@@ -1,0 +1,46 @@
+/* Footer */
+/* Set the style of both the header and footer so they're consistent */
+.footerBar{
+  height: 8em;
+  bottom: 0;
+  display: flex;
+  background-color: #7b9868;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+}
+
+.footerBranding{
+  padding-bottom: 0.5em;
+}
+.footerLinks{
+  display: flex;
+}
+.instagramIcon{
+  font-size: 1.4em;
+  margin-right: 0.2em;
+}
+.footerRight{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.emailContainer{
+  justify-content: center;
+  padding: 0.5em 0;
+}
+.enterEmail{
+  width: 15em;
+  border: none;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+.submitEmail{
+  font-family: "Lato";
+  width: fit-content;
+  padding: 0.5em 0.75em;
+  border: none;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  background-color: #bbd0ae;
+}

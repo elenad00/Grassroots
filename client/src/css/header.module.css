@@ -1,0 +1,34 @@
+/* Set the style for the join us button and hamburger menu */
+.headerBar{
+position: sticky;
+  height: 5em;
+  top: 0;
+  display: flex;
+  background-color: #7b9868;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+}
+.headerRight{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+}
+/* set the style of the join button */
+.joinButton{
+  font-family: "Lato";
+  font-size: 1em;
+  font-weight: normal;
+  border: 0.1em solid #7b9868;
+  padding: 0.5em 1.5em;
+  border-radius: 1em;
+  background-color: #bbd0ae;
+}
+/* Increase the size of the hamburger icon */
+.hamburgerIcon{
+  font-size: 1.8em;
+}
+.hamburgerIcon:hover{
+  cursor: pointer;
+}
