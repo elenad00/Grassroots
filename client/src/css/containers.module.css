@@ -1,0 +1,28 @@
+.artistsContainer{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-top: 1em;
+  gap: 1.5em;
+}
+.containerHolder, 
+.artistContainer{
+  display: flex;
+  flex-direction: column;
+  border: 0.1em solid #7b9868;
+  border-radius: 1em;
+  padding: 1em;
+  max-width: 25em;
+  align-items: center;
+}
+.imageHolder{
+  width: 100%;
+  margin-bottom: 1em;
+  border-radius: 1em;
+}
+.containerText{
+  display: flex;
+  flex-direction: column;
+}
