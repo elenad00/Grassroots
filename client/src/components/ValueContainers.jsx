@@ -1,13 +1,15 @@
 import styles from "../css/containers.module.css"
 import { FaInstagram } from "react-icons/fa"
 
-const ValueContainer = ({title, description, image}) => {
+const ValueContainer = ({greenBG, topContainer, title, description, child}) => {
   return (
-    <div className={styles.containerHolder}>
-      <img src={image} className={styles.imageHolder}></img>
+    <div className={`${styles.containerHolder} ${topContainer ? styles.topContainer : greenBG && styles.greenBG}`}>
       <div className={styles.containerText}>
         <h2>{title}</h2>
         <p>{description}</p>
+        <div>
+          {child}
+        </div>
       </div>
     </div>
   )

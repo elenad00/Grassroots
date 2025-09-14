@@ -1,15 +1,23 @@
-/* Page Header */
-.header{
+/* Homepage Content Container */
+.containerHolder{
+  display: flex;
+  flex-direction: column;
+  padding: 3em 10em;
+  margin: -1em;
   text-align: center;
 }
-.header h1{
-  font-size: 3em;
-  margin-bottom: 0;
+.greenBG{
+  background-image: linear-gradient(to bottom, #98af88, white);
 }
-.header h3{
-  font-size: 1.6em;
-  font-style: italic;
-  font-weight: 400;
+.topContainer{
+  margin-top: -7em;
+  padding-top: 8em;
+  top: 0;
+  background-image: linear-gradient(to bottom, #98af88, white);
+}
+.containerText h2{
+  font-family: "DM Serif Display";
+  font-size: 3em;
 }
 /* Artist/Venue Content */
 .artistsContainer{
@@ -23,11 +31,10 @@
   padding-top: 1em;
   gap: 1.5em;
 }
-.containerHolder, 
 .artistContainer{
   display: flex;
   flex-direction: column;
-  border: 0.1em solid #7b9868;
+  border: 0.1em solid #98af88;
   border-radius: 1em;
   padding: 1em;
   max-width: 25em;

@@ -1,34 +1,122 @@
-/* Set the style for the join us button and hamburger menu */
-.headerBar{
-position: sticky;
-  height: 5em;
-  top: 0;
-  display: flex;
-  background-color: #7b9868;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5em 1em;
+@keyframes gradientAnimation {
+  0% {
+    background-color: transparent;
+  }
+  35% {
+    background-color: rgb(255, 255, 255);
+  }
+  100% {
+    background-color: rgb(255, 255, 255);
+  }
 }
-.headerRight{
+
+/* Sets the style of the header bar - 
+sticky so it stays at the top as the user 
+navigates through the site */
+.headerBar, 
+.headerBarScroll{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  width: 100%;
+  height: 6em;
+  z-index: 1;
+  background-color: transparent;
+  transition: all 1s ease;
+}
+
+.headerBarScroll{
+  background-color: white;
+  box-shadow: 0 6px 14px #0000001a;
+}
+
+/* Apply this class to just the header content so that
+its two child elements are spaced equally at the
+left and right of the header bar*/
+.headerContent{
+  height: inherit;
+  padding: 0 3em;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2em;
 }
-/* set the style of the join button */
-.joinButton{
-  font-family: "Lato";
-  font-size: 1em;
-  font-weight: normal;
-  border: 0.1em solid #7b9868;
-  padding: 0.5em 1.5em;
+
+/* Sets the style for the header content 
+(the links and the dropdown icon) as well as 
+the links themselves - the same css is applied 
+to both classes, hence why it is applied like this
+rather than as two separate classes */
+.headerLinks {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  gap: 1em; 
+}
+
+/* sets the styling for the dropdown items */
+.dropdownClass, .dropdownClassScroll{
+  visibility: hidden;
+  display: block;
+  position: fixed;
+  top: 4em;
+  right: 0;
+  padding: 1em 3em;
+  opacity: 0;
+  transition: all 1s ease;
+  background-color: transparent;
+
+  z-index: 1;
+
+  border: 0.1em solid #ffffff00;
   border-radius: 1em;
-  background-color: #bbd0ae;
+  text-align: right;
 }
-/* Increase the size of the hamburger icon */
-.hamburgerIcon{
-  font-size: 1.8em;
+
+.dropdownClassScroll{
+  background-color: white;
+  box-shadow: 0 6px 14px -7px #0000001a;
 }
-.hamburgerIcon:hover{
-  cursor: pointer;
+
+/* Remove the standard list icon from the list items */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set the style for list items that are
+hyperlinks - this being most of the content of the header
+bar - makes the text black and sets the font  */
+li a{
+  font-family: "DM Serif Display";
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: black;
+}
+
+/* Set the dropdown content to be visible when 
+the mic icon is hovered over */
+li:hover > ul,
+li:focus-within > ul,
+li ul:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+/* Underline link when it is hovered over to 
+give the user a clue it is a link */
+a:hover {
+  text-decoration: underline;
 }

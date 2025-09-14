@@ -1,0 +1,12 @@
+.carousel{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+.artistItem{
+  text-align: center;
+}
+.artistImage{
+  width: calc(100vw / 3 - 5em);
+}
