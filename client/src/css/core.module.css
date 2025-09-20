@@ -1,49 +1,60 @@
 /* Core Body Elements */
 /* Set the basic styling of the page */
-body{
+body {
+  background-image: linear-gradient(to bottom, #98af88, white); 
   font-family: "Lato";
   margin: 0;
 }
 
 /* Fonts */
 /* Set the style of each of the fonts */
-h1{
-  margin: 0;
+h1 {
   font-size: 2rem;
   font-family: "DM Serif Display";
-}
-
-h2{
   margin: 0;
-  font-size: 1.8rem;
-  font-family: "Lato";
-
 }
 
-h3{
+h2 {
+  font-size: 1.75rem;
+  font-family: "Lato";
   margin: 0;
-  font-size: 1.6rem;
-  font-family: "Lato";
-
 }
 
-h4{
+h3 {
+  font-size: 1.5rem;
+  font-family: "Lato";
   margin: 0;
-  font-size: 1.2em;
-  font-family: "Lato";
 }
 
-p, a{
-  text-decoration: none;
+h4 {
+  font-size: 1.3em;
   font-family: "Lato";
+  margin: 0;
+}
+
+a, p {
   color: #000;
-  font-size: 1rem;
+  font-family: "Lato";
+  font-size: 1.1rem;
+  font-weight: 300;
+  padding: 0;
   margin: 0;
+  text-decoration: none;
 }
 
-.bodyContentContainer{
-  max-width: 100vw;
+a:hover{
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.bodyContentContainer {
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  max-width: 100vw;
 }

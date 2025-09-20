@@ -1,25 +1,15 @@
-import {useUser, useSession} from "@descope/react-sdk";
+import { useUser, useSession } from "@descope/react-sdk";
 
-const CheckAuth = () => {
-  const {isAuthenticated, _, __} = useSession();
-  return isAuthenticated;
-}
+const CheckAuth = () => { return useSession(); };
 
 const Username = () => {
-  const {user, isUserLoading} = useUser();
-  if (isUserLoading || !user){
-    return false
-  }
-  return user.customAttributes.username;
-}
+  const { user, isUserLoading } = useUser();
+  return (isUserLoading || !user) ? false : user.customAttributes.username;
+};
 
 const UserPhoto = () => {
-  const {user, isUserLoading} = useUser();
-  if (isUserLoading || !user){
-    return ""
-  }
-  return user.picture;
-}
+  const { user, isUserLoading } = useUser();
+  return (isUserLoading || !user) ? "" : user.picture;
+};
 
-export {CheckAuth, Username, UserPhoto};
-    
+export { CheckAuth, Username, UserPhoto };

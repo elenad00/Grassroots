@@ -1,0 +1,24 @@
+.carousel{
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: -2em;
+  overflow: scroll;
+  padding: 1em 0em;
+  width: calc(100vw - 4em);
+}
+
+.carouselItem{
+  flex: 1;
+  min-width: 9em;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.carouselItem:hover{
+  background-color: rgba(255, 255, 255, 0.369);
+}
+
+.carouselImage{
+  max-width: 100%;
+}

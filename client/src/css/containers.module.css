@@ -2,54 +2,70 @@
 .containerHolder{
   display: flex;
   flex-direction: column;
-  padding: 3em 10em;
-  margin: -1em;
+  padding: 3em 4em;
   text-align: center;
 }
-.greenBG{
-  background-image: linear-gradient(to bottom, #98af88, white);
+
+.transitionBackground{
+  background-image: linear-gradient(to bottom, #adc09e, white);
 }
-.topContainer{
-  margin-top: -7em;
-  padding-top: 8em;
-  top: 0;
-  background-image: linear-gradient(to bottom, #98af88, white);
+
+/* Artist/Venue Content */
+.header{
+  padding: 0.5em 3em;
+  text-align: center;
 }
-.containerText h2{
-  font-family: "DM Serif Display";
+
+.header h1 {
   font-size: 3em;
 }
-/* Artist/Venue Content */
-.artistsContainer{
-  /* flex: 1; */
+
+.header h4 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.dataContainers{
+  align-content: center;
+  align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  padding-top: 1em;
   gap: 1.5em;
+  justify-content: center;
+  padding: 1.5em;
 }
-.artistContainer{
-  display: flex;
-  flex-direction: column;
-  border: 0.1em solid #98af88;
-  border-radius: 1em;
-  padding: 1em;
-  max-width: 25em;
+
+.dataContainer{
   align-items: center;
-}
-.imageHolder{
-  width: 100%;
-  margin-bottom: 1em;
+  border: 0.05em solid #98af88;
   border-radius: 1em;
-}
-.containerText{
+  box-shadow: 5px 5px 5px #98af88;
   display: flex;
-  gap: 0.5em;
   flex-direction: column;
+  max-width: 23em;
+  padding: 1em;
+  text-decoration: none;
 }
-.containerText a{
-  font-size: 1.4em;
+
+.containerImage{
+  border-radius: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.containerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  text-decoration: none;
+}
+
+.containerTitle{
+  font-family: "DM Serif Display";
+  font-size: 2em;
+}
+
+.containerTitle h2:hover{
+  text-decoration: none;
 }

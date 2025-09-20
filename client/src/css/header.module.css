@@ -14,18 +14,17 @@
 sticky so it stays at the top as the user 
 navigates through the site */
 .headerBar, 
-.headerBarScroll{
+.headerBarSolid{
+  background-color: transparent;
+  height: 6em;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  width: 100%;
-  height: 6em;
-  z-index: 1;
-  background-color: transparent;
   transition: all 1s ease;
+  width: 100%;
+  z-index: 1;
 }
-
-.headerBarScroll{
+.headerBarSolid{
   background-color: white;
   box-shadow: 0 6px 14px #0000001a;
 }
@@ -34,71 +33,58 @@ navigates through the site */
 its two child elements are spaced equally at the
 left and right of the header bar*/
 .headerContent{
-  height: inherit;
-  padding: 0 3em;
-  justify-content: space-between;
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  height: inherit;
+  justify-content: space-between;
+  padding: 0 3em;
 }
 
-/* Sets the style for the header content 
-(the links and the dropdown icon) as well as 
-the links themselves - the same css is applied 
-to both classes, hence why it is applied like this
-rather than as two separate classes */
+/* Sets the style for the header links content */
 .headerLinks {
-  display: flex;
-  margin: 0;
   align-items: center;
+  display: flex;
   gap: 1em; 
+  margin: 0;
 }
 
-/* sets the styling for the dropdown items */
-.dropdownClass, .dropdownClassScroll{
-  visibility: hidden;
-  display: block;
-  position: fixed;
-  top: 4em;
-  right: 0;
-  padding: 1em 3em;
-  opacity: 0;
-  transition: all 1s ease;
+/* Set the style for the header
+bar items - sets the font */
+.headerTitle, .headerItem{
+  font-family: "DM Serif Display";
+}
+.headerTitle {
+  font-size: 2rem;
+  padding-right: 0.5em;
+}
+
+/* underlines the header links when they're hovered over */
+.headerTitle:hover,
+.headerItem:hover{
+  text-decoration: underline;
+}
+
+/* Set the styling for the dropdown items */
+.dropdownList, .dropdownListSolid{
   background-color: transparent;
-
-  z-index: 1;
-
   border: 0.1em solid #ffffff00;
   border-radius: 1em;
+  display: block;
+  opacity: 0;
+  padding: 1em 3em;
+  position: fixed;
+  right: 0;
   text-align: right;
+  top: 4em;
+  transition: all 1s ease;
+  visibility: hidden;
+  z-index: 1;
 }
 
-.dropdownClassScroll{
+.dropdownListSolid{
   background-color: white;
   box-shadow: 0 6px 14px -7px #0000001a;
-}
-
-/* Remove the standard list icon from the list items */
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-a {
-  margin: 0;
-  padding: 0;
-}
-
-/* Set the style for list items that are
-hyperlinks - this being most of the content of the header
-bar - makes the text black and sets the font  */
-li a{
-  font-family: "DM Serif Display";
-  font-weight: 400;
-  font-size: 1.2rem;
-  color: black;
 }
 
 /* Set the dropdown content to be visible when 
@@ -106,17 +92,6 @@ the mic icon is hovered over */
 li:hover > ul,
 li:focus-within > ul,
 li ul:hover {
-  visibility: visible;
   opacity: 1;
-}
-
-ul li ul li {
-  clear: both;
-  width: 100%;
-}
-
-/* Underline link when it is hovered over to 
-give the user a clue it is a link */
-a:hover {
-  text-decoration: underline;
+  visibility: visible;
 }

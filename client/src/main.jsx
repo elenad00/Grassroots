@@ -1,13 +1,12 @@
-import { StrictMode } from "react";
 import { AuthProvider } from "@descope/react-sdk";
+import config from "./functionality/config";
 import { createRoot } from "react-dom/client";
-
-import HeaderBar from "./components/HeaderBar";
-import FooterBar from "./components/FooterBar";
-import WebpageRoutes from "./functionality/Routes";
-import config from "./functionality/Config";
-
+import FooterBar from "./components/footer-bar";
+import HeaderBar from "./components/header-bar";
+import { StrictMode } from "react";
 import styles from "./css/core.module.css";
+import WebpageRoutes from "./functionality/routes";
+
 
 const App = () =>{
   return (

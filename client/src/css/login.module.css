@@ -1,6 +1,6 @@
 /* Sign In */
-.signIn{
-  width: 50vw;
-  justify-content: center;
+.signIn {
   align-items: center;
+  justify-content: center;
+  width: 50vw;
 }

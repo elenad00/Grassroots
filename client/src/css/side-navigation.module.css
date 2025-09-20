@@ -2,59 +2,67 @@
 /* Set the style of the core sidenav element - 
 set the width so it doesn't encroach into the main body area */
 .sideNavContainer{
-  flex: 1;
+  background-color: #bbd0ae;
   display: flex;
+  flex: 1;
+  height: 100vh;
   min-width: fit-content;
   max-width: 25vw;
-  height: 100vh;
-  background-color: #bbd0ae;
 }
+
 /* Set the styling for the side nav's content */
 .sideNavContents{
-  flex: 1;
   display: inline-flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   margin: 1em 0;
 }
+
 /* Set the style of the user details element */
 .userPanel{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   margin: 1em 0.5em;
 }
+
 .userImage{
-  width: 10em;
   margin-bottom: 0.5em;
+  width: 10em;
 }
+
 /* Set the style of the side nav links */
 .sideNavLinks{
-  flex: 1;
   display: inline-flex;
+  flex: 1;
   flex-direction: column;
 }
+
 .sideNavLink{
   font-weight: bold;
   padding: 1em;
   text-align: center;
 }
+
 .sideNavLink:hover{
   background-color: #ffffff5e;
 }
+
 /* Set the style of the sign in button elements */
 .sideNavSignIn{
-  text-align: center;
-  justify-content: center;
-  font: "Lato";
-  font-size: 1em;
+  background-color: #ffffff5e;
   border: 0.1em solid #bbd0ae;
   border-radius: 1em;
+  font: "Lato";
+  font-size: 1em;
+  justify-content: center;
   margin: 0 0.25em;
   padding: 0.5em 0.75em;
-  background-color: #ffffff5e;
+  text-align: center;
 }
+
 .sideNavSignIn:hover{
   background-color: white;
 }
