@@ -1,37 +1,18 @@
 import DataContainer from "../components/data-container";
 import data from '../page-content/artists.json';
-import styles from "../css/containers.module.css";
+import "../css/multiuse.css"
 
 const Artists = () => {
-  // get the data from json file
-  const pageTitle = data.title;
-  const pageDescription = data.description;
-  const artists = data.items;
-
   return (
-    <>
+    <div className="pageContent">
       {/* Page Header */}
-      <div className={styles.header}>
-        <h1>{pageTitle}</h1>
-        <h4>{pageDescription}</h4>
+      <div className="header">
+        <h1>{data.title}</h1>
+        <h4>{data.description}</h4>
       </div>
       {/* Item Container */}
-      <div className={styles.dataContainers}>
-        { artists.map((artist, index) => {
-          return (
-            <DataContainer 
-              dataType="users"
-              description={artist.bio}
-              image={artist.imagePath}
-              instagramHandle={artist.instagramHandle}
-              key={index}
-              title={artist.name}
-              username={artist.username}
-            />
-          )
-        })}
-      </div>
-    </>
+      <DataContainer dataGroup={data.items} />
+    </div>
   )
 }
 

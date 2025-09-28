@@ -1,32 +1,27 @@
-import { FaInstagram } from "react-icons/fa";
-import styles from "../css/containers.module.css";
+import BasicButton from "../components/basic-button";
+import styles from "../css/data-containers.module.css";
 
 // Creates and returns a data container element which is used to house an
 // image, title, and description. Used for both artists and venues
 const DataContainer = ({
-  dataType,
-  description, 
-  image, 
-  instagramHandle, 
-  title,
-  username
+  dataGroup
 }) => {
-  const instagramLink = `https://instagram.com/${instagramHandle}`;
-  const userPage = `/${dataType}/${username}`;
-  
   return (
-      <div className={styles.dataContainer}>
-        <a href={userPage} >
-          <img src={image} className={styles.containerImage}></img>
-        </a>
-        <div className={styles.containerText}>
-          <h2 className={styles.containerTitle}>{title}</h2>
-          <p className={styles.containerDescription}>{description}</p>
-          <a className={styles.instagramIcon} href={instagramLink}>
-            <FaInstagram />
-          </a>
-        </div>
-      </div>
+    <div className={styles.containerHolder}>
+      {dataGroup.map((data, i) => {
+        return (
+          <div className={styles.dataContainer} key={i}>
+            <img src={data.imagePath}></img>
+            <h2>{data.name}</h2>
+            <p>{data.bio}</p>
+            <BasicButton 
+              link={`/${data.dataType}/${data.username}`} 
+              title="Learn More" 
+            />
+          </div>
+        )
+      })}
+    </div>
   )
 }
 

@@ -1,11 +1,16 @@
-.homeButton{
-  background-color: #98af88;
-  border: 0.1em solid transparent;
-  border-radius: 1em;
-  font-family: 'Lato';
-  font-size: 1rem;
-  margin-top: 0.5em;
-  padding: 0.25em 1em;
+.containerHolder{
+  display: flex;
+  flex-direction: column;
+  padding: 3em 4em;
+  text-align: center;
+}
+
+.transitionBackground{
+  background-image: linear-gradient(to bottom, #adc09e, white);
+}
+
+.containerText {
+  padding-bottom: .5em;
 }
 
 .missionContainer{

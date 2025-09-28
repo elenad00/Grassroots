@@ -1,32 +1,29 @@
 import artistData from '../page-content/artists.json';
-import styles from "../css/homepage.module.css";
-
-const HomepageButton = ({link, title}) => {
-  return (
-    <div>
-      <a href={link}>
-        <button className={styles.homeButton}>
-          {title}
-        </button>
-      </a>
-    </div>
-  );
-};
+import venueData from '../page-content/venues.json';
 
 const HomepageData = [
   {
-    button: <HomepageButton link="/signin" title="Join The Community" />,
+    button: {
+      link: "/signin",
+      title: "Join The Community"
+    },
     description: "We're changing the way things work in the London music scene, by making it easier to connect fans to  grassroots venues and emerging artists.",
     title: "Hey, We're Grassroots!",
-    topContainer: true,
   }, {
-    button: <HomepageButton link="/venues" title="Learn More" />,
+    button: {
+      link: "/venues",
+      title: "Learn More"
+    },
+    carouselItems: venueData.items,
     changeBackground: true,
     description: "The amazing grassroots venues we showcase",
     hasCarousel: true,
     title: "Our Venues",
   }, {
-    button: <HomepageButton link="/artists" title="See More" />,
+    button: {
+      link: "/artists",
+      title: "See More"
+    },
     carouselItems: artistData.items,
     description: "Our incredible artists making waves across the London music scene",
     hasCarousel: true,

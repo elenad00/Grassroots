@@ -1,6 +1,11 @@
 /* Sign In */
-.signIn {
-  align-items: center;
-  justify-content: center;
-  width: 50vw;
+.signInPanel {
+  align-self: center;
+  align-content: center;
+  min-height: calc(100vh - 14em);
+  min-width: 25em;
+}
+
+.signInContainer{
+  width: 100%;
 }

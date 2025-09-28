@@ -2,13 +2,15 @@
   "name": "grassroots",
   "version": "0.0.1",
   "dependencies": {
-    "@descope/react-sdk": "^2.19.0",
-    "axios": "^1.11.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons":"^5.5.0",
-    "react-router": "^7.8.2",
-    "react-router-dom": "^7.8.2"
+    "@descope/react-sdk": "^2.20.4",
+    "axios": "^1.12.2",
+    "oidc-client-ts":"^3.3.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0",
+    "react-leaflet": "^5.0.0-rc.2",
+    "react-router": "^7.9.1",
+    "react-router-dom": "^7.9.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

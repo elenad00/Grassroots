@@ -1,3 +1,4 @@
+import BasicButton from "../components/basic-button"
 import Carousel from "../components/image-carousel"
 import HomepageSegment from "../components/homepage-segment"
 import HomepageData from '../page-content/homepage'
@@ -18,14 +19,14 @@ const Homepage = () => {
   }
 
   return (
-    <div>
+    <>
       {HomepageData.map((panel, i) => {
         return (
           <HomepageSegment 
             child={ 
               <div>
                 {panel.carouselItems && <Carousel displayElements={panel.carouselItems} />}
-                {panel.button && panel.button}
+                {panel.button && <BasicButton link={panel.button.link} title={panel.button.title} />}
                 {panel.items && <MissionContainer panel={panel} />}
               </div>
             }
@@ -36,7 +37,7 @@ const Homepage = () => {
           />
         )
       })}
-    </div>
+    </>
   )
 }
 

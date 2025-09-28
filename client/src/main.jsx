@@ -10,7 +10,10 @@ import WebpageRoutes from "./functionality/routes";
 
 const App = () =>{
   return (
-    <AuthProvider projectId={config.AUTH.PROJECT_ID} sessionTokenViaCookie>
+    <AuthProvider
+      projectId={config.AUTH.PROJECT_ID}
+      sessionTokenViaCookie
+    >
       <div className={styles.appContainer}>
         <HeaderBar />
         <div className={styles.bodyContentContainer}>

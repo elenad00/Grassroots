@@ -1,15 +1,14 @@
-import { useUser, useSession } from "@descope/react-sdk";
-
-const CheckAuth = () => { return useSession(); };
+import { useSession } from "@descope/react-sdk";
+const CheckAuth = () => {return useSession();};
 
 const Username = () => {
-  const { user, isUserLoading } = useUser();
-  return (isUserLoading || !user) ? false : user.customAttributes.username;
+  const username = localStorage.getItem("dls_last_user_display_name");
+  return username;
 };
 
 const UserPhoto = () => {
-  const { user, isUserLoading } = useUser();
-  return (isUserLoading || !user) ? "" : user.picture;
+  const userPhoto = localStorage.getItem("dls_last_user_photo");
+  return userPhoto;
 };
 
 export { CheckAuth, Username, UserPhoto };

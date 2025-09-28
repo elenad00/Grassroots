@@ -1,21 +1,28 @@
-import { SignUpOrInFlow } from "@descope/react-sdk";
-import { redirect } from "react-router";
-
+import config from "../functionality/Config";
+import { AuthProvider, Descope, useUser } from "@descope/react-sdk";
+import { Username } from "../functionality/Authentication";
 import styles from "../css/login.module.css";
+import { useEffect, useState } from "react";
+import "../css/multiuse.css";
 
 const SignIn = () => {
-  const handleSignIn = (e) => {
-    // if the user is signed in then redirect them to their home page
-    const username = e.detail.user.customAttributes.username;
-    redirect(`/users/${username}`);
+  const DescopeHolder = () => {
+    return (
+      <AuthProvider projectId={config.AUTH.PROJECT_ID}>
+        <Descope
+          flowId="sign-user-up"
+          theme="light"
+        />
+      </AuthProvider>
+    )
   }
   return (
     <div className = {styles.signInPanel}>
-      {/* use descope for login */}
-      <SignUpOrInFlow
-        onSuccess={(e) => {handleSignIn(e)}}
-        onError={(err) => {console.log("Error!", err)}}
-      />
+      <h1> Hey! Welcome to Grassroots </h1>
+      <p> Grassroots is London's hub for connecting venues, artists and gig-lovers. And we're so happy to have you join us.</p>
+      <div className={styles.signinContainer}>
+        <DescopeHolder />
+      </div>
     </div> 
   );
 };
