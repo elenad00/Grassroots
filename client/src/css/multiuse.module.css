@@ -1,0 +1,39 @@
+/* Page Content */
+.pageContent{
+  min-height: calc(100vh - 16em);
+  padding: 0 3em;
+}
+
+/* Page Header */
+.header{
+  padding-bottom: 1em;
+  text-align: center;
+}
+/* Page Element Container */
+.pageElement{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 10em;
+  padding-bottom: 2em;
+  width: 100%;
+}
+
+.pageElementRow{
+  flex-direction: row;
+}
+
+/* Navigation Button */
+.navButton{
+  background-color: #98af88;
+  border-radius: 1em;
+  display: grid;
+  text-align: center;
+  padding: .5em;
+  min-width: 10em;
+  max-width: fit-content;
+}
+.navButton:hover {
+  background-color: #98af8849;
+}

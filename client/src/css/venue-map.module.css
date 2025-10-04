@@ -3,24 +3,14 @@
 .mapHolder {
   align-items: center;
   box-shadow: 1em 1em 1em #98af88;
+  width: 100%;
   height: calc(100vh - 15em);
 }
-
 /* Map Marker Popups */
 .markerPopup h4 {
-  font-family: "DM Serif Display";
   padding-bottom: 0.25em;
 }
 .markerPopup p{
   padding: .1em 0;
   margin: 0;
-}
-
-.venuesContainer{
-  padding-top: 1.75em;
-}
-.venuesHeader{
-  font-family: "DM Serif Display";
-  font-size: 2.6em;
-  text-align: center;
 }

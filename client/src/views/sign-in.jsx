@@ -1,30 +1,32 @@
-import config from "../functionality/Config";
-import { AuthProvider, Descope, useUser } from "@descope/react-sdk";
-import { Username } from "../functionality/Authentication";
-import styles from "../css/login.module.css";
-import { useEffect, useState } from "react";
-import "../css/multiuse.css";
+import { AuthProvider, Descope } from "@descope/react-sdk";
+import { config } from "../functionality/Config";
+import { getUsername } from "../functionality/authentication";
+import { NavButton, PageContent, PageElement } from "../components/multiuse-elements";
 
-const SignIn = () => {
+export function SignIn () {
+  const username = getUsername();
+  
+  const ExistingUser = () => {
+    return (
+      <>
+        <h3>Looks like you're already logged in {username}!</h3>
+        <p>Click below to sign in with a different account.</p>
+        <NavButton content={{title: "Use A Different Account", link: "/sign-out"}}/>
+      </>
+    )
+  }
   const DescopeHolder = () => {
     return (
       <AuthProvider projectId={config.AUTH.PROJECT_ID}>
-        <Descope
-          flowId="sign-user-up"
-          theme="light"
-        />
+        <Descope flowId="sign-user-up" theme="light" />
       </AuthProvider>
     )
   }
   return (
-    <div className = {styles.signInPanel}>
-      <h1> Hey! Welcome to Grassroots </h1>
-      <p> Grassroots is London's hub for connecting venues, artists and gig-lovers. And we're so happy to have you join us.</p>
-      <div className={styles.signinContainer}>
-        <DescopeHolder />
-      </div>
-    </div> 
+    <PageContent page="sign-in">
+      <PageElement>
+        {username ? <ExistingUser /> : <DescopeHolder />}
+      </PageElement>
+    </PageContent>
   );
 };
-
-export default SignIn;

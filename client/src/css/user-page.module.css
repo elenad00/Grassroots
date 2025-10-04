@@ -1,0 +1,41 @@
+.userPageNav {
+  display: grid;
+  gap: 1em;
+  height: inherit;
+  max-width: fit-content;
+}
+.userPageNav button{
+  background-color: #98af88;
+  border-radius: 1em;
+  border: none;
+  display: grid;
+  font-family: "Lato";
+  min-width: 10em;
+  max-width: fit-content;
+  padding: .5em;
+  text-align: center;
+}
+.userPageNav button:hover,
+.userPageNav button:disabled {
+  background-color: #98af8849;
+  color: black;
+}
+
+.profileHolder{
+  display: flex;
+  gap: 1em;
+}
+
+.profileHolder div{
+  padding: 0 5em;
+}
+
+.profile img{
+  height: 10em;
+  width: 10em;
+  background-color: wheat;
+}
+
+.favContainer{
+  height: fit-content;
+}

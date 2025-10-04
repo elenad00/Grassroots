@@ -1,60 +1,53 @@
 /* Core Body Elements */
 /* Set the basic styling of the page */
-body {
+body{
   background-image: linear-gradient(to bottom, #98af88, white); 
+  color: #000;
   font-family: "Lato";
   margin: 0;
 }
-
 /* Fonts */
 /* Set the style of each of the fonts */
-h1 {
-  font-size: 2rem;
+h1, h2, h3, h4{
   font-family: "DM Serif Display";
   margin: 0;
 }
-
-h2 {
-  font-size: 1.75rem;
+h5, p, a{
   font-family: "Lato";
   margin: 0;
 }
-
-h3 {
-  font-size: 1.5rem;
-  font-family: "Lato";
-  margin: 0;
+/* h1 - used for page and panel headings and footer */
+h1{
+  font-size: 2.5em;
 }
-
-h4 {
-  font-size: 1.3em;
-  font-family: "Lato";
-  margin: 0;
+/* h2 -used for the data card heading */
+h2{
+  font-size: 2em;
 }
-
+/* h3 - used for the image carousels and sign in already signed up */
+h3{
+  font-size: 1.75em;
+}
+/* h4 - used for mission element header and marker popup */
+h4{
+  font-size: 1.25em;
+  padding: .2em 0;
+}
+/* h5 - used for subheadings */
+h5{
+  font-size: 1.2em;
+  font-weight: 400;
+}
+/* a - used for hyperlinks, p - used for main body text */
 a, p {
-  color: #000;
-  font-family: "Lato";
-  font-size: 1.1rem;
+  color: black;
+  font-size: 1.1em;
   font-weight: 300;
-  padding: 0;
-  margin: 0;
   text-decoration: none;
 }
-
-a:hover{
-  text-decoration: none;
-}
-
-ul {
+/* ul - used for the header bar list items */
+li {
   list-style-type: none;
   margin: 0;
-  overflow: hidden;
   padding: 0;
-}
-
-.bodyContentContainer {
-  display: flex;
-  flex-direction: column;
-  max-width: 100vw;
 }

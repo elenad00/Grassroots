@@ -1,6 +1,7 @@
 @keyframes gradientAnimation {
   0% {
     background-color: transparent;
+    background-image: linear-gradient(to bottom,#9bb28c, #a4b896); 
   }
   35% {
     background-color: rgb(255, 255, 255);
@@ -13,85 +14,62 @@
 /* Sets the style of the header bar - 
 sticky so it stays at the top as the user 
 navigates through the site */
-.headerBar, 
-.headerBarSolid{
+.headerBar,
+.dropdownList{
   background-color: transparent;
-  height: 6em;
+  display: flex;
+  transition: all 1s ease;
+  z-index: 1;
+}
+.headerBar{
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 3em;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  transition: all 1s ease;
-  width: 100%;
-  z-index: 1;
 }
-.headerBarSolid{
-  background-color: white;
-  box-shadow: 0 6px 14px #0000001a;
-}
-
-/* Apply this class to just the header content so that
-its two child elements are spaced equally at the
-left and right of the header bar*/
-.headerContent{
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  height: inherit;
-  justify-content: space-between;
-  padding: 0 3em;
-}
-
-/* Sets the style for the header links content */
-.headerLinks {
-  align-items: center;
-  display: flex;
-  gap: 1em; 
-  margin: 0;
-}
-
-/* Set the style for the header
-bar items - sets the font */
-.headerTitle, .headerItem{
+.headerBar a{
   font-family: "DM Serif Display";
 }
-.headerTitle {
-  font-size: 2rem;
-  padding-right: 0.5em;
-}
-
-/* underlines the header links when they're hovered over */
-.headerTitle:hover,
-.headerItem:hover{
+.headerBar a:hover{
   text-decoration: underline;
+}
+.headerBar a:first-of-type{
+  font-size: 2.5em;
 }
 
 /* Set the styling for the dropdown items */
-.dropdownList, .dropdownListSolid{
-  background-color: transparent;
-  border: 0.1em solid #ffffff00;
-  border-radius: 1em;
-  display: block;
+.dropdownList{
+  background-image: linear-gradient(
+    to bottom,
+    #9bb28c,
+    #a4b896
+  ); 
+  text-align: right;
+  flex-direction: column;
   opacity: 0;
-  padding: 1em 3em;
+  padding-bottom: 1.5em;
+  padding-left: 1.5em;
+  padding-top: .25em;
+  padding-right: 3em;
   position: fixed;
   right: 0;
-  text-align: right;
-  top: 4em;
-  transition: all 1s ease;
+  top: 3.8em;
   visibility: hidden;
-  z-index: 1;
 }
 
-.dropdownListSolid{
+.userScrolled{
   background-color: white;
+  background-image: none;
   box-shadow: 0 6px 14px -7px #0000001a;
 }
 
 /* Set the dropdown content to be visible when 
 the mic icon is hovered over */
-li:hover > ul,
-li:focus-within > ul,
-li ul:hover {
+.micIcon:hover + .dropdownList,
+.micIcon:focus-within + .dropdownList,
+.dropdownList:hover {
   opacity: 1;
   visibility: visible;
 }

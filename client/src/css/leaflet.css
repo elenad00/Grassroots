@@ -84,6 +84,14 @@ customisation of the map elements */
 	width: 1em;
 }
 
+/* Markers */
+/* Set the z-index of the markers so they are always visible, 
+the important flag overrides the leaflet default */
+.leaflet-marker-icon, 
+.leaflet-marker-icon.leaflet-interactive{
+	z-index: 300 !important;
+}
+
 /* Popup */
 /* Set the style for the popup container */
 .leaflet-popup,

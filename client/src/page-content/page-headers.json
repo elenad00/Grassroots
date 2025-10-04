@@ -1,0 +1,18 @@
+{
+  "artists": {
+    "heading": "Our Artists",
+    "subheading": "The amazing artists that are part of the Grassroots family"
+  },
+  "sign-in": {
+    "heading": "Welcome to Grassroots",
+    "subheading": "Grassroots is London's hub for connecting venues, artists and gig-lovers. And we're so happy to have you join us."
+  },
+  "venues": {
+    "heading": "Grassroots Venues",
+    "subheading": "The incredible grassroots venues across London that we are proud to be partnered with"
+  },
+  "venue-list": {
+    "heading": "All Venues",
+    "subheading": "Don't care about location? Have a browse of all of our venues"
+  }
+}

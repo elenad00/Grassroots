@@ -1,16 +1,15 @@
 
 /* Artist/Venue Container Styles */
-.containerHolder {
+.cardHolder {
   align-items: top;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2em;
   justify-content: center;
-  padding: 1.5em 0;
 }
 
-.dataContainer {
+.dataCard {
   border-radius: 1em;
   box-sizing: content-box;
   box-shadow: .5em .5em 1em #98af88;
@@ -21,7 +20,7 @@
   width: 25em;
 }
 
-.dataContainer img {
+.dataCard img {
   width: 25em;
   height: 20em;
   object-fit: cover;
@@ -29,7 +28,6 @@
   margin-bottom: 1em;
 }
 
-.dataContainer h2 {
-  font-family: "DM Serif Display";
-  font-size: 2em;
+.dataCard p{
+  padding-bottom: .5em;
 }

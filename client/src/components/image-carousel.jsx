@@ -1,25 +1,24 @@
+import { ArtistCarousel, VenueCarousel } from './data-returns';
 import styles from '../css/image-carousel.module.css';
 
-const ImageCarousel = ({ displayElements }) => {
+export function ImageCarousel ({dataKey}) {
+  const content = dataKey == "artists" ? ArtistCarousel : VenueCarousel;
+
+  function ImageElement ({item}){
+    const userLink = `/${dataKey}/${item.username}`;
+    return(
+      <a href={userLink} className={styles.carouselItem}>
+        <img src={item.imagePath} />
+        <h3>{item.name}</h3>
+      </a>
+    )
+  }; 
+
   return (
-    <div className={ styles.carousel }>
-      { displayElements.map(( element, index ) => {
-        return (
-          <a 
-            href={`users/${ element.username }`} 
-            className={styles.carouselItem}
-            key={index}
-          >
-            <img
-              src={element.imagePath}
-              className={styles.carouselImage}
-            />
-            <h3>{element.name}</h3>
-          </a>
-        );
-      } ) }
+    <div className={styles.carousel}>
+      {content.map((item, i) => {
+        return <ImageElement item={item} key={i} />;
+      })}
     </div>
   );
 };
-
-export default ImageCarousel;

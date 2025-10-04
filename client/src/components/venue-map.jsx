@@ -1,70 +1,49 @@
-import BasicButton from './basic-button';
-import L from 'leaflet';
+import { NavButton } from './multiuse-elements';
+import { Icon } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import styles from "../css/venues.module.css";
-import '../css/leaflet.css';
+import styles from "../css/venue-map.module.css";
+import { VenueMarkerData } from './data-returns';
+import "../css/leaflet.css";
 
-const VenueMap = ({venues}) => {
-  // replace the buggy marker icon with an icon that
-  // better fits with the website's theme
-  const markerIcon = L.icon({
-    iconUrl: "../../public/images/marker-icon.png",
-    // set the icon's size
-    iconSize: [ 30, 32 ],
-    // set the icon's anchor point to be the bottom of the point
-    iconAnchor: [ 15, 32 ],
-    popupAnchor:[0, 0]
-  });
-
-  // create the popup that shows above each of the marker points
-  const MarkerPopup = ({venue}) => {
-    return (
-      <Popup>
-        <div className={styles.markerPopup}>
-          {/* Venue Name */}
-          <h4>{venue.name}</h4>
-          {/* Venue Address */}
-          {venue.address.map((line, i) => {
-            return(
-              <p key={i}>
-                {line}
-              </p>
-            )
-          })}
-          <BasicButton link={`/venues/${venue.username}`} title="Learn More"/>
-        </div>
-      </Popup>
-    );
-  };
-
-  return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      scrollWheelZoom={false}
-      zoom={12}
-    >
-      {/* Set the map's attribution as well as importing the map itself */}
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {/* for each venue in venues, return the marker and its popup */}
-      {venues.map((venue, i) => {
-        return (
-          <Marker
-            icon={markerIcon}
-            key={i}
-            position={[
-              venue.coordinates.latitude,
-              venue.coordinates.longitude
-            ]}
-          >
-            <MarkerPopup venue={venue} />
-          </Marker>
-        );
-      })}
-    </MapContainer>
-  );
+const iconConfig = {
+  // Set the icon link, size, anchor point, and where the popup anchors from
+  iconUrl: "../../public/images/marker-icon.png",
+  iconSize: [30, 32],
+  iconAnchor: [15, 32],
+  popupAnchor:[0, 0]
 };
 
-export default VenueMap;
+function VenueMarker ({venue}) {
+  // Create the venue marker icon that points to a venue on the map
+  return (
+    <Marker icon={new Icon(iconConfig)} position={venue.coords}>
+      <Popup className={styles.markerPopup}>
+        <h4>{venue.name}</h4>
+        {venue.address.map((line, i) => {
+          return <p key={i}>{line}</p>
+        })} 
+        <NavButton content={venue.buttonContent}/>
+      </Popup>
+    </Marker>
+  );
+}
+  
+export function VenueMap(){
+  // Returns a map containing markers to each of the affiliated Grassroots venues
+  // The attribution for OpenStreetMaps
+  const layerAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  // The link to get the map image
+  const layerURL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+  return (
+    <div className = {styles.mapHolder}>
+      <MapContainer center={[51.52, -.1]} zoom={12} worldCopyJump={false}>
+        {/* Set the map's attribution as well as importing the map itself */}
+        <TileLayer attribution={layerAttribution} url={layerURL}/>
+        {/* for each venue in venues, return the marker and its popup */}
+        {VenueMarkerData.map((venue, i) => {
+          return <VenueMarker venue={venue} key={i} />
+        })}
+      </MapContainer>
+    </div>
+  );
+};

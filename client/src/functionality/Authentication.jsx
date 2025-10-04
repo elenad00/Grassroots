@@ -1,14 +1,33 @@
-import { useSession } from "@descope/react-sdk";
-const CheckAuth = () => {return useSession();};
+import { useSession, useUser } from "@descope/react-sdk";
+import { useEffect, useState } from "react";
 
-const Username = () => {
-  const username = localStorage.getItem("dls_last_user_display_name");
-  return username;
+export function getUserDetails(setUserInfo){
+  const session = useSession()
+  const {isUserLoading, user} = useUser();
+  useEffect(()=>{
+    if(!isUserLoading && !session.isSessionLoading) {
+      const formattedUserData = {
+        username: user.name,
+        photo: user.picture,
+        email: user.email
+      }
+    setUserInfo(formattedUserData)
+    }
+  },[session.isSessionLoading, user])
+}
+
+export function getUsername(){
+  const [userInfo, setUserInfo] = useState();
+  getUserDetails(setUserInfo);
+  if (userInfo){
+    return userInfo.username;
+  };
 };
 
-const UserPhoto = () => {
-  const userPhoto = localStorage.getItem("dls_last_user_photo");
-  return userPhoto;
+export function getUserPhoto(){
+  const [userInfo, setUserInfo] = useState();
+  getUserDetails(setUserInfo);
+  if (userInfo){
+    return userInfo.picture;
+  };
 };
-
-export { CheckAuth, Username, UserPhoto };

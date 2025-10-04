@@ -1,11 +1,16 @@
 /* Sign In */
-.signInPanel {
-  align-self: center;
+.signinContainer{
   align-content: center;
-  min-height: calc(100vh - 14em);
-  min-width: 25em;
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+  width: 100%;
 }
 
-.signInContainer{
-  width: 100%;
+.existingUserContainer{
+  background-color: #a2b9916f;
+  border-radius: 1em;
+  line-height: 1.8em;
+  padding: 1.5em;
+  text-align: center;
 }

@@ -1,28 +1,7 @@
-.containerHolder{
-  display: flex;
-  flex-direction: column;
-  padding: 3em 4em;
-  text-align: center;
-}
-
-.transitionBackground{
-  background-image: linear-gradient(to bottom, #adc09e, white);
-}
-
-.containerText {
-  padding-bottom: .5em;
-}
-
-.missionContainer{
-  display: flex;
-  gap: 1.25em;
-  margin-top: 1em;
-}
-
 .missionElement{
-  text-align: left;
+  padding: .25em 0;
 }
-
 .missionElement h3{
   font-family: "DM Serif Display";
+  padding: .1em 0;
 }
