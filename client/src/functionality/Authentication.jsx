@@ -1,5 +1,5 @@
-import { useSession, useUser } from "@descope/react-sdk";
-import { useEffect, useState } from "react";
+import { useDescope, useSession, useUser } from "@descope/react-sdk";
+import { useCallback, useEffect, useState } from "react";
 
 export function getUserDetails(setUserInfo){
   const session = useSession()
@@ -41,3 +41,11 @@ export function getUserPhoto(){
     return userInfo.picture;
   };
 };
+
+export function SignOut(){
+  const { logout } = useDescope();
+  const handleLogout = useCallback(() => {
+    logout()
+  }, [logout])
+  handleLogout()
+}
