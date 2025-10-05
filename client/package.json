@@ -1,50 +1,48 @@
 {
-  "name": "grassroots",
-  "version": "0.0.1",
-  "dependencies": {
-    "@descope/react-sdk": "^2.20.4",
-    "axios": "^1.12.2",
-    "oidc-client-ts":"^3.3.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-icons": "^5.5.0",
-    "react-leaflet": "^5.0.0-rc.2",
-    "react-router": "^7.9.1",
-    "react-router-dom": "^7.9.1"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
-    "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "vite": "^7.1.2"
-  },
-  "overrides": {
-    "react-error-overlay": "6.1.0"
-  },
-  "scripts": {
-    "start": "vite dev",
-    "build": "vite build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "grassroots",
+	"version": "1.0.0",
+	"dependencies": {
+		"@descope/react-sdk": "^2.21.0",
+		"axios": "^1.12.2",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
+		"react-icons": "^5.5.0",
+		"react-leaflet": "^5.0.0-rc.2",
+		"react-router": "^7.9.3",
+		"react-router-dom": "^7.9.3"
+	},
+	"devDependencies": {
+		"@eslint/css": "^0.11.1",
+		"@eslint/js": "^9.37.0",
+		"@types/react": "^19.2.0",
+		"@types/react-dom": "^19.2.0",
+		"@vitejs/plugin-react": "^5.0.4",
+		"eslint": "^9.37.0",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"eslint-plugin-react-native": "^5.0.0",
+		"eslint-plugin-react-refresh": "^0.4.20",
+		"globals": "^16.4.0",
+		"vite": "^7.1.9",
+		"vite-plugin-eslint": "^1.8.1"
+	},
+	"overrides": {
+		"react-error-overlay": "6.1.0"
+	},
+	"scripts": {
+		"start": "vite dev",
+		"build": "vite build"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

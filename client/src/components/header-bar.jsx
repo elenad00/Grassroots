@@ -7,8 +7,13 @@ import { useEffect, useState } from "react";
 export function HeaderBar () {
   const [inBody, setInBody] = useState(false);
   const [subStyle, setSubstyle] = useState("")
+  
   const username = getUsername();
   const dropdownLinks = username ? headerLinks.signedIn : headerLinks.newUser;
+  const usernameItem = {
+    link: '/user', title: username
+  };
+  
   window.addEventListener("scroll", scFunc);
 
   function scFunc(){
@@ -25,28 +30,28 @@ export function HeaderBar () {
     : setSubstyle("")
   }, [inBody])
 
-  const LinkBlock = ({linkObj, username}) => {
-    const usernameItem = {
-      link:`/users/${username}`, 
-      title: username
-    };
-    return (
-      linkObj.map((obj, i) => {
-        obj = obj.title=="username" ? usernameItem : obj;
-        return (
-          <a href={obj.link} key={i}> {obj.title} </a>
-        )
-      })
-    )
-  }
-  
+  const CoreLinks = (
+    <div className={styles.coreLinks}>
+      {headerLinks.core.map((item, i) => {
+        return <a href={item.link} key={i}> {item.title} </a>
+      })}
+    </div>
+  )
+  const DropdownBlock = (
+    <div className={`${styles.dropdownList} ${subStyle}`}>
+      {dropdownLinks.map((item, i) => {
+          item = item.title=="username"  ? usernameItem : item
+          return <a href={item.link} key={i}> {item.title}</a>
+        })
+      }
+    </div> 
+  )
+
   return (
     <nav className={`${styles.headerBar} ${subStyle}`}>
-      <LinkBlock linkObj={headerLinks.core} />
+      {CoreLinks}
       <PiMicrophoneStageBold className={styles.micIcon} />
-      <div className={`${styles.dropdownList} ${subStyle}`}>
-        <LinkBlock linkObj={dropdownLinks}  username={username}/>
-      </div> 
+      {DropdownBlock}      
     </nav>
   );
 };

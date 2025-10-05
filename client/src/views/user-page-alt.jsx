@@ -1,3 +1,27 @@
+// .userPageNav {
+//   display: grid;
+//   gap: 1em;
+//   height: inherit;
+//   max-width: fit-content;
+// }
+// .userPageNav button{
+//   background-color: #98af88;
+//   border-radius: 1em;
+//   border: none;
+//   display: grid;
+//   font-family: "Lato";
+//   min-width: 10em;
+//   max-width: fit-content;
+//   padding: .5em;
+//   text-align: center;
+// }
+// .userPageNav button:hover,
+// .userPageNav button:disabled {
+//   background-color: #98af8849;
+//   color: black;
+// }
+
+
 import Favourites from "../components/user-page/favourites";
 import { getUserDetails } from "../functionality/authentication";
 import { PageContent, PageElement } from "../components/multiuse-elements";

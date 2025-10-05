@@ -1,12 +1,15 @@
 import { PageElement } from "../multiuse-elements";
+import styles from "../../css/user-page.module.css"
 
-export function Settings ({userData}) {
-  return(
-    <PageElement title={{heading: "Your Settings"}}>
+export function Settings ({userInfo}) {
+
+  return (
+    <PageElement >
       <PageElement display="row">
+        <img src={userInfo.photo}></img>
         <PageElement>
-          <img href={userData.photo}></img>
-          <h2>{userData.username}</h2>
+          <h2>{userInfo.username}</h2>
+          <p>{userInfo.email}</p>
         </PageElement>
       </PageElement>
     </PageElement>

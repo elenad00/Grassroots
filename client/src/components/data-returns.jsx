@@ -4,13 +4,13 @@ import venueData from "../page-content/venues.json";
 function GenerateCards(data, dataName){
   let cards = [];
   for (let k in data){
-    const v = data[k];
+    const d = data[k];
     cards.push({
-      name: v.name,
-      bio: v.bio,
-      imagePath: v.imagePath,
+      name: d.name,
+      bio: d.bio,
+      imagePath: d.imagePath,
       buttonContent: {
-        link: `/${dataName}/${v.username}`, 
+        link: `/${dataName}/${k}`, 
         title: "Learn More"
       }
     })
@@ -40,7 +40,7 @@ function GenerateMarkers(){
       address: v.address,
       coords: v.coordinates,
       buttonContent: {
-        link: `/venues/${v.username}`, 
+        link: `/venues/${k}`, 
         title: "Learn More"
       }
     })

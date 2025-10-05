@@ -1,5 +1,4 @@
-import { NavButton } from "../multiuse-elements";
-import { PageElement } from "../multiuse-elements";
+import { NavButton, PageElement } from "../multiuse-elements";
 import styles from "../../css/user-page.module.css";
 
 function FavouriteContainer({type, userInfo}){
@@ -45,7 +44,7 @@ export function Profile ({userInfo}){
         <img src={userInfo.photo}></img>
         <h2>{userInfo.username}</h2>
         <p>{userInfo.email}</p>
-        <NavButton content={{link:"/user/edit", title:"Edit Profile"}} />
+        <NavButton content={{link:"/user/settings", title:"Edit Profile"}} />
       </div>
       <div className={styles.favourites}>
         <FavouriteContainer type="Artists" userInfo={userInfo}/>

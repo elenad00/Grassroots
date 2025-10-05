@@ -11,7 +11,7 @@ export function UserPage(){
   const [pageLoaded, setPageLoaded] = useState(false);
   const [pageHeading, setPageHeading] = useState();
   const [pageContent, setPageContent] = useState();
-  
+
   getUserDetails(setUserInfo);
   
   // wait for user info to load before rendering page
@@ -21,19 +21,19 @@ export function UserPage(){
       const content = {
         user: {
           content: <Profile userInfo={userInfo} />, 
-          heading:`Hey there ${userInfo.username}`
+          heading:`Hey there ${userInfo.username}`,
         },
         settings: {
           content: <Settings userInfo={userInfo} />, 
-          heading:'User Settings'
+          heading:'User Settings',
         },
         favouriteartists: {
           content: <Favourites type="Artists" userInfo={userInfo} />, 
-          heading: "Your Favourite Artists"
+          heading: "Your Favourite Artists",
         },
         favouritevenues: {
           content: <Favourites type="Venues" userInfo={userInfo} />, 
-          heading: "Your Favourite Venues"
+          heading: "Your Favourite Venues",
         }
       }
       // get the last element of the current location's path

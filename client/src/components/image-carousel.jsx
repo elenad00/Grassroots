@@ -2,7 +2,11 @@ import { ArtistCarousel, VenueCarousel } from './data-returns';
 import styles from '../css/image-carousel.module.css';
 
 export function ImageCarousel ({dataKey}) {
-  const content = dataKey == "artists" ? ArtistCarousel : VenueCarousel;
+  const content = (
+    dataKey == "artists" 
+      ? ArtistCarousel 
+      : VenueCarousel
+  );
 
   function ImageElement ({item}){
     const userLink = `/${dataKey}/${item.username}`;
@@ -22,3 +26,4 @@ export function ImageCarousel ({dataKey}) {
     </div>
   );
 };
+

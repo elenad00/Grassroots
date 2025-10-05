@@ -6,17 +6,17 @@ export function InitialAuth () {
   const searchParams = new URLSearchParams(window.location.search);
   const authCode = searchParams.get("code");
   const descopeClient = useDescope();
-  let {isSessionLoading, sessionToken, claims, isAuthenticated} = useSession();
+  const session = useSession();
 
   useEffect(() => {
     async function getAuth ({authCode}) {
       try{
-        const dsExchangeResp = await descopeClient.oauth.exchange(authCode);
+        await descopeClient.oauth.exchange(authCode);
       } catch(error){
         console.log(`Handshake returned ${error.code}: ${error.message}`)
       }
       try{
-        const dsRefresh = await descopeClient.refresh();
+        await descopeClient.refresh();
       } catch(error){
         console.log(`Refresh returned ${error.code} : ${error.message}` )
       }
@@ -25,10 +25,10 @@ export function InitialAuth () {
   }, [])
 
   useEffect(() => {
-    if (sessionToken && isAuthenticated && !isSessionLoading){
+    if (session.sessionToken && session.isAuthenticated && !session.isSessionLoading){
       setAuthorised(true)
     }
-  }, [isSessionLoading]) 
+  }, [session.isSessionLoading]) 
 
   if (authorised){
     window.location.href = "/"

@@ -6,11 +6,21 @@ export function getUserDetails(setUserInfo){
   const {isUserLoading, user} = useUser();
   useEffect(()=>{
     if(!isUserLoading && !session.isSessionLoading) {
-      const formattedUserData = {
-        username: user.name,
-        photo: user.picture,
-        email: user.email
+      let formattedUserData;
+      if (user){
+        formattedUserData = {
+          username: user.name,
+          photo: user.picture,
+          email: user.email
+        }
+      } else{
+        formattedUserData = {
+          username: false,
+          photo: false,
+          email: false
+        }
       }
+      
     setUserInfo(formattedUserData)
     }
   },[session.isSessionLoading, user])

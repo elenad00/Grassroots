@@ -2,7 +2,7 @@
   align-items: top;
   display: flex;
   justify-content: space-evenly;
-  padding-bottom: 1em;
+  margin: 1em 0;
   overflow: scroll;
 }
 
@@ -19,5 +19,6 @@
 
 .carouselItem img{
   border-radius: 1em;
+  margin-bottom: .25em;
   max-width: 100%;
 }
