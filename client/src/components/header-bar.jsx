@@ -1,14 +1,13 @@
-import { getUsername } from "../functionality/authentication";
 import headerLinks from "../page-content/header-links.json"
 import { PiMicrophoneStageBold } from "react-icons/pi";
 import styles from "../css/header.module.css";
 import { useEffect, useState } from "react";
 
 export function HeaderBar () {
+  const [username, setUsername] = useState()
   const [inBody, setInBody] = useState(false);
   const [subStyle, setSubstyle] = useState("")
   
-  const username = getUsername();
   const dropdownLinks = username ? headerLinks.signedIn : headerLinks.newUser;
   const usernameItem = {
     link: '/user', title: username
@@ -29,6 +28,10 @@ export function HeaderBar () {
     ? setSubstyle(styles.userScrolled)
     : setSubstyle("")
   }, [inBody])
+
+  useEffect(()=>{
+    setUsername(window.sessionStorage.getItem("username"))
+  }, [])
 
   const CoreLinks = (
     <div className={styles.coreLinks}>

@@ -23,7 +23,7 @@
 
 
 import Favourites from "../components/user-page/favourites";
-import { getUserDetails } from "../functionality/authentication";
+import { getUserDetails } from "../../../archive/Authentication";
 import { PageContent, PageElement } from "../components/multiuse-elements";
 import Profile from "../components/user-page/profile";
 import Settings from "../components/user-page/settings";

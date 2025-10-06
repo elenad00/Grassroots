@@ -1,5 +1,7 @@
 import { NavButton, PageElement } from "../multiuse-elements";
 import styles from "../../css/user-page.module.css";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function FavouriteContainer({type, userInfo}){
   const favourites = type == 'Artists' ? userInfo.favArtists : userInfo.favVenues;
@@ -38,18 +40,22 @@ function FavouriteContainer({type, userInfo}){
 }
 
 export function Profile ({userInfo}){
-  return(
-    <PageElement display="row">
-      <div className={styles.profile}>
-        <img src={userInfo.photo}></img>
-        <h2>{userInfo.username}</h2>
-        <p>{userInfo.email}</p>
-        <NavButton content={{link:"/user/settings", title:"Edit Profile"}} />
-      </div>
-      <div className={styles.favourites}>
-        <FavouriteContainer type="Artists" userInfo={userInfo}/>
-        <FavouriteContainer type="Venues" userInfo={userInfo} />
-      </div>
-    </PageElement>
-  )
+  
+  if(userInfo){
+    return(
+      <PageElement display="row">
+        <div className={styles.profile}>
+          <img src={userInfo.picture}></img>
+          <h2>{userInfo.username}</h2>
+          <p>{userInfo.forename} {userInfo.surname}</p>
+          <p>{userInfo.email}</p>
+          <NavButton content={{link:"/user/settings", title:"Edit Profile"}} />
+        </div>
+        <div className={styles.favourites}>
+          <FavouriteContainer type="Artists" userInfo={userInfo}/>
+          <FavouriteContainer type="Venues" userInfo={userInfo} />
+        </div>
+      </PageElement>
+    )
+  }
 };

@@ -1,8 +1,10 @@
 import { AuthProvider, Descope, useDescope, useSession} from "@descope/react-sdk";
-import { config } from "../functionality/config";
-import { getUsername } from "../functionality/authentication";
-import { NavButton, PageContent, PageElement } from "../components/multiuse-elements";
+import { config } from "../client/src/functionality/config";
+import { getUsername } from "./Authentication";
+import { NavButton, PageContent, PageElement } from "../client/src/components/multiuse-elements";
 import { useEffect } from "react";
+
+
 export function SignIn () {
   const username = getUsername();
   

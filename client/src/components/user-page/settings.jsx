@@ -6,7 +6,7 @@ export function Settings ({userInfo}) {
   return (
     <PageElement >
       <PageElement display="row">
-        <img src={userInfo.photo}></img>
+        <img src={userInfo.picture}></img>
         <PageElement>
           <h2>{userInfo.username}</h2>
           <p>{userInfo.email}</p>

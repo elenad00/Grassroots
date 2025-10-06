@@ -2,7 +2,6 @@
 	"name": "grassroots",
 	"version": "1.0.0",
 	"dependencies": {
-		"@descope/react-sdk": "^2.21.0",
 		"axios": "^1.12.2",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0",

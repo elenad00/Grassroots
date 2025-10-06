@@ -1,16 +1,59 @@
 /* Sign In */
 .signinContainer{
-  align-content: center;
+  flex: 5;
+  height: 100%;
+  margin-top: -1.5em
+} 
+.signinContainer p{
+  padding: 1em;
+  text-align: center;
+}
+.emailContainer,
+.oauthContainer {
+  align-items: center;
   display: flex;
-  justify-content: center;
-  padding: 2em 0;
-  width: 100%;
+  flex-direction: column;
+  gap: .5em;
+  padding: .5em 0;
 }
 
-.existingUserContainer{
-  background-color: #a2b9916f;
+/* Email Container */
+.emailContainer input{
+  border: .2em solid white;
   border-radius: 1em;
-  line-height: 1.8em;
-  padding: 1.5em;
+  height: 2em;
+  width: 20em;
+}
+.emailContainer button{
+  background-color: #98af88;
+  border: none;
+  border-radius: 1em;
+  display: grid;
+  font-family: "Lato";
+  font-size: 1em;
+  padding: .5em;
+  margin-top: .5em;
+  max-width: fit-content;
+  min-width: 10em;
   text-align: center;
+}
+.emailContainer button:hover,
+.oauthButtons button:hover {
+  background-color: #b9c9ae;
+  cursor: pointer;
+}
+/* OAuth Container */
+.oauthButtons {
+  justify-content: space-between;
+}
+.oauthButtons button {
+  background: none;
+  border: none;
+  border-radius: 1em;
+  margin: 0 1em;
+  padding: .25em;
+}
+.oauthButtons button svg{
+  height: 4em;
+  width: 4em;
 }
