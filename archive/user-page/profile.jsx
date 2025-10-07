@@ -6,7 +6,6 @@ import { useState } from "react";
 function FavouriteContainer({type, userInfo}){
   const favourites = type == 'Artists' ? userInfo.favArtists : userInfo.favVenues;
   const lowerType = type.toLowerCase();
-
   function FavouritesGrid(){
     const topThree = favourites.slice(2);
     return (
@@ -40,7 +39,6 @@ function FavouriteContainer({type, userInfo}){
 }
 
 export function Profile ({userInfo}){
-  
   if(userInfo){
     return(
       <PageElement display="row">

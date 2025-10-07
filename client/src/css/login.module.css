@@ -1,3 +1,8 @@
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
 /* Sign In */
 .signinContainer{
   flex: 5;
@@ -18,13 +23,19 @@
 }
 
 /* Email Container */
+.emailContainer form{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .emailContainer input{
   border: .2em solid white;
   border-radius: 1em;
-  height: 2em;
-  width: 20em;
+  min-height: 2em;
+  min-width: 20em;
 }
-.emailContainer button{
+.emailContainer form button,
+.signOutButtons button{
   background-color: #98af88;
   border: none;
   border-radius: 1em;
@@ -38,7 +49,8 @@
   text-align: center;
 }
 .emailContainer button:hover,
-.oauthButtons button:hover {
+.oauthButtons button:hover,
+.signOutButtons button:hover {
   background-color: #b9c9ae;
   cursor: pointer;
 }
@@ -56,4 +68,63 @@
 .oauthButtons button svg{
   height: 4em;
   width: 4em;
+}
+
+/* OTP Input */
+.otpPage{
+  align-content: top;
+  display: grid;
+  flex: 5;
+  justify-content: center;
+  margin-top: -1.5em;
+  text-align: center;
+  width: 100%;
+}
+
+.codeInput{
+  margin-bottom: 1em;
+}
+
+.codeInput input{
+  border: none;
+  border-radius: .5em;
+  font-family: "Lato";
+  font-size: 3em;
+  margin: .1em;
+  max-width: .75em;
+  padding: .25em;
+  text-align: center;
+}
+.input, .badInput{
+  transition-duration: .5s;
+}
+.input{
+  background-color: white;}
+
+.badInput{
+  background-color: #c6a2a2;
+}
+.error{
+  transition: opacity 0.5s ease-out;
+  opacity: 0
+}
+.erroractive{
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+/* Sign Out Buttons */
+.signOutButtons{
+  display: flex;
+  gap: 3em;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.signOutButtons .signout{
+  background: #b9c9ae;
+}
+.signOutButtons .signout:hover{
+  background: #98af88;
 }

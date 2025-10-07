@@ -1,4 +1,5 @@
-import headerLinks from "../page-content/header-links.json"
+import { GetUsername, TouchJWT } from "../functionality/session-storage";
+import headerLinks from "../page-content/header-links.json";
 import { PiMicrophoneStageBold } from "react-icons/pi";
 import styles from "../css/header.module.css";
 import { useEffect, useState } from "react";
@@ -10,7 +11,7 @@ export function HeaderBar () {
   
   const dropdownLinks = username ? headerLinks.signedIn : headerLinks.newUser;
   const usernameItem = {
-    link: '/user', title: username
+    link: '/user/profile', title: username
   };
   
   window.addEventListener("scroll", scFunc);
@@ -30,7 +31,16 @@ export function HeaderBar () {
   }, [inBody])
 
   useEffect(()=>{
-    setUsername(window.sessionStorage.getItem("username"))
+    const storedUsername = GetUsername();
+    if(storedUsername){
+      setUsername(storedUsername)
+      return
+    } else if (TouchJWT){
+      setUsername("grassroots user")
+    } else{
+      setUsername(false)
+    }
+    
   }, [])
 
   const CoreLinks = (
@@ -43,10 +53,9 @@ export function HeaderBar () {
   const DropdownBlock = (
     <div className={`${styles.dropdownList} ${subStyle}`}>
       {dropdownLinks.map((item, i) => {
-          item = item.title=="username"  ? usernameItem : item
-          return <a href={item.link} key={i}> {item.title}</a>
-        })
-      }
+        item = item.title=="username"  ? usernameItem : item
+        return <a href={item.link} key={i}> {item.title}</a>
+      })}
     </div> 
   )
 

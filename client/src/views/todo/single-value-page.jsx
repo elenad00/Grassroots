@@ -1,7 +1,7 @@
 import {PageContent, PageElement } from "../../components/multiuse-elements";
 // import styles from "../css/core.module.css";
 
-export function SingleValuePage () {
+export default function SingleValuePage () {
   return (
     <PageContent>
       <PageElement>

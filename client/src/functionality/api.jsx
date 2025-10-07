@@ -1,23 +1,52 @@
 import axios from "axios";
-import GetUUID from "./uuid-setter-getter"
+import { GetSessionId } from "./session-storage"
 
 const api = axios.create({baseURL: '/api/v1'})
 
-async function apiPost(location, metadata){
-  // get the user's session id
-  const userUUID = GetUUID();
-  // set the headers to ensure that the client can receive json and set the session id
-  const headers = {
+function getHeaders(metadata){
+  const sessionId = GetSessionId();
+  let headers = {
     'Content-Type': "application/json",
-    'Authorization': `${userUUID}` 
+    'Authorization': `${sessionId}` ,
   }
+  if(metadata){
+    headers.Metadata = metadata
+  }
+  return headers;
+}
+
+function handleError(error){
+  let handledError;
+  if(error.response.data.message){
+    handledError = error.response.data
+  } else{
+    handledError = {
+      status: error.status,
+      code: error.code,
+      message: error.message
+    }
+  }
+  return handledError;
+}
+
+export async function apiPost(location, metadata){
   // initiate the post request
+  const headers = getHeaders(metadata)
   try{
     const response = await api.post(location, metadata, {headers: headers})
     return {error: false, data: response.data};
   } catch (error){
-    return {error: error.response.data, data: false}
+    return {error: handleError(error), data: false}
   }
 }
 
-export default apiPost
+export async function apiGet(location, metadata){
+  // initiate the post request
+  const headers = getHeaders(metadata)
+  try{
+    const response = await api.get(location, {headers: headers})
+    return {error: false, data: response.data};
+  } catch (error){
+    return {error: handleError(error), data: false}
+  }
+}

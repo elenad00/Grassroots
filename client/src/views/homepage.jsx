@@ -27,7 +27,7 @@ function Panel ({content}) {
   )
 }
 
-export function Homepage (){
+export default function Homepage (){
   return (
     <PageContent page={false}>
       {data.items.map((content, i) => {

@@ -1,8 +1,7 @@
-import { PageElement } from "../multiuse-elements";
+import { PageElement } from "../../client/src/components/multiuse-elements";
 import styles from "../../css/user-page.module.css"
 
 export function Settings ({userInfo}) {
-
   return (
     <PageElement >
       <PageElement display="row">

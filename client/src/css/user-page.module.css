@@ -1,11 +1,22 @@
-.profile,
-.favourites{
-  min-height: 20em;
+.profileContainer,
+.favourites,
+.settings {
+  flex: 5;
   height: 100%;
+  min-height: 20em;
+}
+.profileContainer{
+  display: flex;
+  gap: 2em; 
+  width: 80%;
 }
 .profile{
-  display: block;
+  align-items: center;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
   height: inherit;
+  max-width: fit-content;
 }
 .profile img{
   min-width: 12em;
@@ -20,4 +31,64 @@
 }
 .favourites .favContainer:first-of-type {
   margin-bottom: 2em;
+}
+
+.settings{
+  text-align: center;
+}
+.settings form{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 1em;
+}
+
+.settings form button {
+  background-color: #98af88a3;
+  border: none;
+  border-radius: .25em;
+  font-family: "Lato";
+  font-size: 1em;
+  font-weight: 300;
+  padding: .5em 1em;
+}
+
+.settings form button:hover{
+  background-color: #98af88;
+  cursor: pointer;
+}
+
+.updateItems{
+  display: flex;
+  gap: 2em;
+}
+
+.updateItems div{
+  align-items: center;
+  box-shadow: .5em .5em 1em #98af88;
+  border-radius: .5em;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  justify-content: center;
+  min-height: 7em;
+  padding: .5em;
+  text-align: center;
+}
+.updateItems div input{
+  border: none;
+  border-radius: .2em;
+  box-shadow: none;
+  font-family: "Lato";
+  font-size: 1em;
+  font-weight: 300;
+  padding: .2em;
+}
+.updateItems div button{
+  background-color: #ccd9c2;
+}
+.updateItems div button:hover{
+  background-color: #ccd9c2;
+  cursor: not-allowed;
 }

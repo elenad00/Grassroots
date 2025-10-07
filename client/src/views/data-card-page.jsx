@@ -5,7 +5,7 @@ import styles from "../css/data-cards.module.css";
 import { useEffect, useState } from "react";
 import { VenueMap } from "../components/venue-map";
 
-export function DataCardPage() {
+export default function DataCardPage() {
 	const [cardPack, setCardPack] = useState();
 	const [subTitle, setSubTitle] = useState();
 	const [renderMap, setRenderMap] = useState(false);

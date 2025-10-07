@@ -7,6 +7,10 @@
     "heading": "Welcome to Grassroots",
     "subheading": "Grassroots is London's hub for connecting venues, artists and gig-lovers. And we're so happy to have you join us."
   },
+  "sign-in-otp":{
+    "heading": "Check Your Inbox",
+    "subheading": "We've sent you a verification code - you've got five minutes to enter it so be quick!"
+  },
   "venues": {
     "heading": "Grassroots Venues",
     "subheading": "The incredible grassroots venues across London that we are proud to be partnered with"

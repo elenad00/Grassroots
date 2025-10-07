@@ -1,5 +1,6 @@
 import data from "../page-content/page-headers.json";
-import { Link } from "react-router"
+import { Link } from "react-router";
+import { ScaleLoader } from "react-spinners";
 import styles from "../css/multiuse.module.css";
 
 export function NavButton ({content}){
@@ -44,3 +45,12 @@ export function PageElement({title, display, children}){
     </div>
   )
 }
+
+export const PageLoading = (
+  <ScaleLoader 
+    width={5} 
+    height={80} 
+    color="#98af88" 
+    barCount={10}
+  />
+)
