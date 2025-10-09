@@ -8,7 +8,6 @@
 
 .carouselItem{
   border-radius: 1em;
-  flex: 1;
   min-width: 9em;
   padding: 0.5em;
   text-align: center;
@@ -20,5 +19,6 @@
 .carouselItem img{
   border-radius: 1em;
   margin-bottom: .25em;
+  max-height: 20em;
   max-width: 100%;
 }

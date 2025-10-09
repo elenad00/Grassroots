@@ -5,9 +5,7 @@
 
 /* Sign In */
 .signinContainer{
-  flex: 5;
   height: 100%;
-  margin-top: -1.5em
 } 
 .signinContainer p{
   padding: 1em;
@@ -74,9 +72,7 @@
 .otpPage{
   align-content: top;
   display: grid;
-  flex: 5;
   justify-content: center;
-  margin-top: -1.5em;
   text-align: center;
   width: 100%;
 }

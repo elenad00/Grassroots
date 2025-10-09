@@ -4,7 +4,7 @@ import DataCardPage from "../views/data-card-page";
 import Homepage from "../views/homepage";
 import SignIn from "../views/sign-in";
 import SignOut from "../views/sign-out";
-import SingleValuePage from "../views/todo/single-value-page";
+import SingleValuePage from "../views/single-value-page";
 import UserPage from "../views/user";
 
 export function WebpageRoutes () {

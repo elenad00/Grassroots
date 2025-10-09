@@ -1,4 +1,4 @@
-import { NavButton, PageElement, PageLoading } from "./multiuse-elements";
+import { NavButton, PageElement, Loader } from "./multiuse-elements";
 import styles from "../css/user-page.module.css";
 
 export function Settings ({userData}) {
@@ -107,6 +107,6 @@ export function Profile ({userData}){
       </div>
     )
   } else {
-    return(PageLoading)
+    return Loader
   }
 };

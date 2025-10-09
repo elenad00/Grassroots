@@ -17,13 +17,15 @@ navigates through the site */
 .headerBar,
 .dropdownList{
   background-color: transparent;
-  display: flex;
   transition: all 1s ease;
   z-index: 1;
 }
-.headerBar{
+.headerBar {
   align-items: center;
-  justify-content: space-between;
+  display: flex;
+  font-family: "DM Serif Display";
+  gap: 2em;
+  max-width: 100vw;
   padding: 1em 3em;
   position: sticky;
   position: -webkit-sticky;
@@ -31,29 +33,26 @@ navigates through the site */
 }
 .headerBar a{
   font-family: "DM Serif Display";
-  font-size: 1.4em;
 }
 .headerBar a:hover{
   text-decoration: underline;
 }
-.headerBar a:first-of-type{
+.headerBar .branding{
   font-size: 2.5em;
 }
-
-/* Core links */
-.coreLinks{
-  align-items: center;
-  display: flex;
-  gap: 1.5em;
+.headerBar .micIcon{
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: auto;
+  width: fit-content
+}
+.micIcon svg{
+  font-size: 1.2em;
 }
 
 /* Set the styling for the dropdown items */
 .dropdownList{
-  background-image: linear-gradient(
-    to bottom,
-    #9bb28c,
-    #a4b896
-  ); 
   text-align: right;
   flex-direction: column;
   opacity: 0;
@@ -78,7 +77,26 @@ navigates through the site */
 the mic icon is hovered over */
 .micIcon:hover + .dropdownList,
 .micIcon:focus-within + .dropdownList,
-.dropdownList:hover {
+.micIcon:focus + .dropdownList,
+.dropdownList:hover 
+.dropdownVisible{
   opacity: 1;
   visibility: visible;
+}
+
+/* Mobile */
+@media only screen and (max-width: 428px) {
+  .headerBar{
+    padding: 1em;
+    gap: 1.5em;
+  }
+  .headerBar a{
+    font-size: 1em;
+  }
+  .headerBar .branding{
+    font-size: 1.8em;
+  }
+  .dropdownList{
+    padding-right: 1em;
+  }
 }

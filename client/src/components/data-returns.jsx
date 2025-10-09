@@ -18,7 +18,7 @@ function GenerateCards(data, dataName){
   return cards;
 }
 
-function GenerateCarousel(data){
+export function GenerateCarousel(data){
   let carouselItems = [];
   for (let k in data){
     let d = data[k]
@@ -31,25 +31,7 @@ function GenerateCarousel(data){
   return carouselItems
 }
 
-function GenerateMarkers(){
-  let markers = [];
-  for (let k in venueData){
-    const v = venueData[k];
-    markers.push({
-      name: v.name,
-      address: v.address,
-      coords: v.coordinates,
-      buttonContent: {
-        link: `/venues/${k}`, 
-        title: "Learn More"
-      }
-    })
-  };
-  return markers;
-}
-
 export const ArtistCards = GenerateCards(artistData, "artists");
 export const ArtistCarousel = GenerateCarousel(artistData);
 export const VenueCards = GenerateCards(venueData, "venues");
 export const VenueCarousel = GenerateCarousel(venueData);
-export const VenueMarkerData = GenerateMarkers();

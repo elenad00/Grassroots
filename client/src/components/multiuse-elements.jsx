@@ -35,9 +35,10 @@ export function PageContent({page, children}){
   )
 }
 
-export function PageElement({title, display, children}){
+export function PageElement({title, display, children, subclass}){
   let style = `${styles.pageElement}`
   style += display ? ` ${styles.pageElementRow}` : '';
+  style+= subclass ? ` ${subclass}` : ''
   return (
     <div className={style}>
       {title && <PageHeader page={title} />}
@@ -46,11 +47,21 @@ export function PageElement({title, display, children}){
   )
 }
 
-export const PageLoading = (
+export const Loader = (
   <ScaleLoader 
     width={5} 
     height={80} 
-    color="#98af88" 
+    color="#000000ff" 
     barCount={10}
   />
 )
+
+export function LoadingPage(){
+  return(
+    <PageElement>
+      <PageContent>
+        {Loader}
+      </PageContent>
+    </PageElement>
+  )
+}

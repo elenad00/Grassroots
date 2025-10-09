@@ -3,7 +3,7 @@ import { PageContent, PageElement } from "../components/multiuse-elements";
 import { NavButton } from "../components/multiuse-elements";
 import styles from "../css/data-cards.module.css";
 import { useEffect, useState } from "react";
-import { VenueMap } from "../components/venue-map";
+import { AllVenuesMap } from "../components/venue-map";
 
 export default function DataCardPage() {
 	const [cardPack, setCardPack] = useState();
@@ -29,8 +29,8 @@ export default function DataCardPage() {
 	return (
 		<PageContent page={dataType}>
 			{renderMap && (
-				<PageElement>
-					<VenueMap />
+				<PageElement subclass={styles.allVenuesMap}>
+					<AllVenuesMap />
 				</PageElement>
 			)}
 			<PageElement title={subTitle}>

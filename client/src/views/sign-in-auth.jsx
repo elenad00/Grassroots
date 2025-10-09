@@ -1,6 +1,6 @@
 import { ExchangeAuthCode, ExchangeOTP } from "../functionality/api-routes";
 import OTPInput from "../components/otp-code-input";
-import { NavButton, PageContent, PageElement, PageLoading } from "../components/multiuse-elements";
+import { NavButton, PageContent, PageElement, Loader } from "../components/multiuse-elements";
 import { DeleteUserEmail, SetJWTs, SetUsername } from "../functionality/session-storage";
 import styles from "../css/login.module.css"
 import { useEffect, useState } from "react";
@@ -51,7 +51,7 @@ export function AuthOAuth(){
     <PageContent>
       <PageElement>
         { isLoading 
-          ? (PageLoading)
+          ? Loader
           : (
             <>
               <p>{errorLine}</p>

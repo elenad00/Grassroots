@@ -1,6 +1,6 @@
 import { Favourites, Profile, Settings } from '../components/user-pages';
 import { GetFullUserInformation } from '../functionality/api-routes';
-import { NavButton, PageContent, PageElement, PageLoading } from "../components/multiuse-elements";
+import { NavButton, PageContent, PageElement, Loader } from "../components/multiuse-elements";
 import { TouchJWT } from "../functionality/session-storage"
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import "../css/user-page.module.css"
 
 export default function UserPage (){
   const [pageHeading, setPageHeading] = useState();
-  const [pageValues, setPageValues] = useState(PageLoading);
+  const [pageValues, setPageValues] = useState();
   const [userData, setUserData] = useState(false);
   const [resp, setResp] = useState(false);
   const requestedPage = useParams();
@@ -19,7 +19,9 @@ export default function UserPage (){
     }
     setPageHeading({heading: "Oops!", subheading: subheading});
     setPageValues(
-      <><NavButton content={{link:'/sign-in', title:"Sign In"}} /></>
+      <>
+        <NavButton content={{link:'/sign-in', title:"Sign In"}} />
+      </>
     )
     console.log(`${error.value} ${error.code}: ${error.message}`)
   }
@@ -59,15 +61,19 @@ export default function UserPage (){
   }
 
   useEffect(()=>{
+    console.log(TouchJWT())
     if (!TouchJWT()){
-      handleError("Looks like you're not logged in", false)
+      handleError("Looks like you're not logged in", false);
+      return
     } else{
-      getUserData(setResp)
+      getUserData(setResp);
     }
   },[requestedPage])
   
   useEffect(()=>{
-    renderPage()
+    if(userData){
+      renderPage()
+    }
   },[userData])
 
   useEffect(() => {

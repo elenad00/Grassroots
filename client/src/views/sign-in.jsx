@@ -1,6 +1,6 @@
 import { FaApple, FaGithub, FaGoogle, FaMicrosoft } from "react-icons/fa";
 import { InitialiseOauth, InitialiseOTPAuth } from "../functionality/api-routes";
-import { PageContent, PageElement, PageLoading } from "../components/multiuse-elements";
+import { Loader, PageContent, PageElement } from "../components/multiuse-elements";
 import { useEffect, useState } from "react";
 import { DeleteUserEmail, SetUserEmail } from "../functionality/session-storage";
 import styles from "../css/login.module.css";
@@ -104,7 +104,7 @@ export default function SignIn(){
   if(isLoading){
     pageContent = (
       <PageElement>
-        {PageLoading}
+        {Loader}
       </PageElement>
     )
   } else{

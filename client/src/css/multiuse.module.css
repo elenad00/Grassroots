@@ -1,33 +1,29 @@
 /* Page Content */
 .pageContent{
-  display: flex;
-  flex-direction: column;
   gap: 1.5em;
-  margin: 1.5em 0;
   min-height: calc(100vh - 18em);
-  padding: 0 3em;
+  padding: 1em 3em;
 }
 
 /* Page Header */
 .header{
   align-items: center;
-  flex: 1;
   justify-content: center;
-  height: fit-content;
   margin-bottom: .5em;
+  max-height: fit-content;
+  padding-bottom: .5em;
   text-align: center;
 }
 
 /* Page Element Container */
 .pageElement{
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex: 9;
-  flex-direction: column;
+  text-align: center;
+  height: fit-content;
+  margin-bottom: 1.5em;
   width: 100%;
 }
 .pageElementRow{
+  display: flex;
   flex-direction: row;
   gap: 5em;
 }
@@ -36,13 +32,29 @@
 .navButton{
   background-color: #98af88;
   border-radius: 1em;
-  display: grid;
   padding: .5em;
-  margin-top: .5em;
+  margin: 1em;
   max-width: fit-content;
   min-width: 10em;
   text-align: center;
 }
 .navButton:hover {
   background-color: #98af8849;
+}
+
+/* Mobile */
+@media only screen and (max-width: 428px) {
+  .pageContent{
+    min-height: 800px;
+    padding: .5em 1em;
+  }
+  .pageElement{
+    max-height: 800px;
+  }
+  .header h1{
+    font-size: 1.6em;
+  }
+  .header h5{
+    font-size: 1em;
+  }
 }
