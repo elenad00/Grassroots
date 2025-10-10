@@ -34,7 +34,8 @@ navigates through the site */
 .headerBar a{
   font-family: "DM Serif Display";
 }
-.headerBar a:hover{
+.headerBar a:hover,
+.dropdownList a:hover{
   text-decoration: underline;
 }
 .headerBar .branding{
@@ -84,8 +85,40 @@ the mic icon is hovered over */
   visibility: visible;
 }
 
+/* Footer */
+.footerBar{
+  background-color: #98af88;
+  display: block;
+  max-height: 8em;
+  padding: 0.5em 3em 0.75em;
+}
+.footerBar p{
+  line-height: 1.3em;
+}
+.contactLine{
+  display: inline-flex;
+  align-items: center;
+}
+.footerBar a{
+  height: .9em;
+  padding-right: .2em;
+}
+
 /* Mobile */
 @media only screen and (max-width: 428px) {
+  .footerBar{
+    padding: 1em;
+    gap: 1.5em;
+  }
+  .footerBar h1{
+    font-size: 1.5em;
+  }
+  .footerBar p{
+    font-size: 1em;
+  }
+  .dropdownList{
+    padding-right: 1em;
+  } 
   .headerBar{
     padding: 1em;
     gap: 1.5em;
@@ -94,9 +127,14 @@ the mic icon is hovered over */
     font-size: 1em;
   }
   .headerBar .branding{
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
   .dropdownList{
     padding-right: 1em;
+    padding-top: 0em;
+  }
+  .micIcon{
+    margin-top: .3em;
+    min-height: 1.65em
   }
 }

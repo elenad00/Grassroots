@@ -1,46 +1,46 @@
-import {
-  NavButton, 
-  PageContent, 
-  PageElement
-} from "../components/multiuse-elements";
-import { ImageCarousel } from "../components/image-carousel";
+import { NavButton, PageContent, PageElement } from "../components/multiuse-elements";
+// import { ImageCarousel } from "../components/image-carousel";
+import { ArtistCarousel, VenueCarousel } from "../components/data-returns";
 import data from "../page-content/homepage.json";
 
-function Panel ({content}) {
-  return (
-    <>
-      {content.items && (
-        content.items.map((textBlock, i) => (
-          <div key={i}>
-            <h4>{textBlock.heading}</h4>
-            <p>{textBlock.content}</p>
-          </div>
-        )))
-      }
-      {content.carouselKey && (
-        <ImageCarousel dataKey={content.carouselKey} />
-      )}
-      {content.button && (
-        <NavButton content={content.button} />
-      )}
-    </>
-  )
-}
-
 export default function Homepage (){
-  return (
-    <PageContent page={false}>
-      {data.items.map((content, i) => {
-        const panelTitle = {
-          heading: content.title, 
-          subheading: content.description
-        }
+  const carousels = [VenueCarousel, ArtistCarousel]
+  return(
+    <PageContent>
+      <PageElement title={data.welcome.header}>
+        <NavButton content={data.welcome.button} />
+      </PageElement>
+      {[data.venues, data.artists].map((data, i) => {
         return (
-          <PageElement title={panelTitle} key={i}>
-            <Panel content={content} />
+          <PageElement title={data.header}>
+            { carousels[i] }
+            <NavButton content={data.button} />
           </PageElement>
         )
       })}
+      <PageElement title={data.mission.header}>
+        {['venues','artists','fans'].map((block) => {
+          const data = data.mission[block]
+          <h3>{data.heading}</h3>
+          <p>{data.content}</p>
+        })}
+      </PageElement>
     </PageContent>
   )
+  // return (
+  //   <PageContent page={false}>
+  //     <PageElement title={}
+  //     {data.items.map((content, i) => {
+  //       const panelTitle = {
+  //         heading: content.title, 
+  //         subheading: content.description
+  //       }
+  //       return (
+  //         <PageElement title={panelTitle} key={i}>
+  //           <Panel content={content} />
+  //         </PageElement>
+  //       )
+  //     })}
+  //   </PageContent>
+  // )
 }

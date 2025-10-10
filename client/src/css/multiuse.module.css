@@ -1,7 +1,7 @@
 /* Page Content */
 .pageContent{
   gap: 1.5em;
-  min-height: calc(100vh - 18em);
+  min-height: calc(100vh - 15.5em);
   padding: 1em 3em;
 }
 
@@ -18,7 +18,7 @@
 /* Page Element Container */
 .pageElement{
   text-align: center;
-  height: fit-content;
+  min-height: fit-content;
   margin-bottom: 1.5em;
   width: 100%;
 }
@@ -31,12 +31,16 @@
 /* Navigation Button */
 .navButton{
   background-color: #98af88;
+  border: none;
   border-radius: 1em;
-  padding: .5em;
-  margin: 1em;
+  padding: .5em .75em;
+  margin-top: .5em;
   max-width: fit-content;
   min-width: 10em;
   text-align: center;
+}
+.navButton a{
+  font-size: 1.25em
 }
 .navButton:hover {
   background-color: #98af8849;
@@ -49,12 +53,18 @@
     padding: .5em 1em;
   }
   .pageElement{
-    max-height: 800px;
+    min-height: fit-content;
+  }
+  .pageElement p{
+    font-size: 1em;
   }
   .header h1{
-    font-size: 1.6em;
+    font-size: 1.5em;
   }
   .header h5{
     font-size: 1em;
+  }
+  .navButton{
+    font-size: .9em;
   }
 }

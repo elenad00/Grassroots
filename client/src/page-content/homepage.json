@@ -1,32 +1,41 @@
 {
-  "items":[
-    {
-      "title": "Hey, We're Grassroots!",
-      "description": "We're changing the way things work in the London music scene, by making it easier to connect fans to  grassroots venues and emerging artists.",
-      "button": {"link": "/sign-in", "title": "Join The Community" }
-    }, {
-      "title": "Our Venues",
-      "description": "The amazing grassroots venues we showcase",
-      "carouselKey": "venues",
-      "button": {"link": "/venues", "title": "Learn More"}
-    }, {
-      "title": "Our Artists",
-      "description": "Our incredible artists making waves across the London music scene",
-      "carouselKey": "artists",
-      "button": {"link": "/artists", "title": "See More"}
-    }, {
-      "title": "Our Mission",
-      "description": "We're here to create a community of musicians and venues across London",
-      "items": [ {
-        "heading": "For Venues",
-        "content": "There is so much talent out there that sometimes it's hard to know where to even start. You're a bit bored of hearing the same three bands every weekend and you want the chance to showcase new talent to your customers, or perhaps boost your image by getting your hands on the biggest names on the scene. Grassroots can hook you up with artists who will add a little bit of something to your music nights."
-      }, {
-        "heading": "For Musicians",
-        "content": "So you want to get your name seen and your music heard. You've come to the right place. Grassroots has been designed with independent artists at is core. We partner with grassroots venues and independent promoters to get you on stage in new, exciting venues where you can perform to new audiences. Whether you're new to the scene and want to play your first gig, or have been around for years and want to get into a venue in a different part of town, Grassroots is for you."
-      }, {
-        "heading": "For Fans",
-        "content": "Want to find a new venue or a new artist? You've come to the right place. Grassroots is here to help you find artists and grassroots venues near you that you will love and come back to time and time again. Finding new music in London can be a challenge, so we're making things easier for you by combining everything you need to know about a venue, artist or gig in one easy place."
-      }]
+  "welcome": {
+    "header": {
+      "heading": "Hey, We're Grassroots!",
+      "subheading": "We're changing the way things work in the London music scene, by making it easier to connect fans to grassroots venues and emerging artists."
+    },
+    "button": {"link": "/sign-in", "title": "Join The Community" }
+  }, 
+  "venues": {
+    "header": {
+      "heading": "Our Venues",
+      "subheading": "The amazing grassroots venues we showcase"
+    },
+    "button": {"link": "/venues", "title": "Learn More"}
+  }, 
+  "artists": {
+    "header":{
+      "heading": "Our Artists",
+      "subheading": "Our incredible artists making waves across the London music scene"
+    },
+    "button": {"link": "/artists", "title": "See More"}
+  }, 
+  "our_mission": {
+    "header": {
+      "heading": "Our Mission",
+      "subheading": "We're here to create a community of musicians and venues across London"
+    },
+    "venues": {
+      "header": {"heading": "For Venues"},
+      "content": "There is so much talent out there that sometimes it's hard to know where to even start. You're a bit bored of hearing the same three bands every weekend and you want the chance to showcase new talent to your customers, or perhaps boost your image by getting your hands on the biggest names on the scene. Grassroots can hook you up with artists who will add a little bit of something to your music nights."
+    }, 
+    "musicians": {
+      "header": {"heading": "For Musicians"},
+      "content": "So you want to get your name seen and your music heard. You've come to the right place. Grassroots has been designed with independent artists at is core. We partner with grassroots venues and independent promoters to get you on stage in new, exciting venues where you can perform to new audiences. Whether you're new to the scene and want to play your first gig, or have been around for years and want to get into a venue in a different part of town, Grassroots is for you."
+    }, 
+    "fans":{
+      "header": {"heading": "For Fans"},
+      "content": "Want to find a new venue or a new artist? You've come to the right place. Grassroots is here to help you find artists and grassroots venues near you that you will love and come back to time and time again. Finding new music in London can be a challenge, so we're making things easier for you by combining everything you need to know about a venue, artist or gig in one easy place."
     }
-  ]
+  }
 }

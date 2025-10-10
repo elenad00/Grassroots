@@ -1,6 +1,7 @@
+import { FaInstagram } from 'react-icons/fa';
 import { GetUsername, TouchJWT } from "../functionality/session-storage";
 import { PiMicrophoneStageBold } from "react-icons/pi";
-import styles from "../css/header.module.css";
+import styles from "../css/header-footer.module.css";
 import { useEffect, useState } from "react";
 
 export function HeaderBar () {
@@ -76,3 +77,22 @@ export function HeaderBar () {
     )
   };
 };
+
+export function FooterBar () {
+  const instagramLink = "https://instagram.com/grassroots.ldn";
+  const instagramIcon = (
+    <a className={styles.instaIcon} href={instagramLink}>
+      <FaInstagram/>
+    </a>
+  )
+  return (
+    <div className={styles.footerBar}>
+      <h1>grassroots</h1>
+      <p>Uniting grassroots venues, artists and fans across London</p>
+      <div className={styles.contactLine}>
+        {instagramIcon}
+        <p>| hello@grassroots-london.com</p>
+      </div>
+    </div>
+  )
+}
