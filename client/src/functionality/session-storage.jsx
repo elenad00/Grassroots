@@ -37,8 +37,8 @@ export function GetRefreshJWT(){
   return GetSessionStorageItem('jwt_refreshToken');
 }
 /** Get the user's stored email */
-export function GetUserEmail(){
-  return GetSessionStorageItem('email')
+export function GetLoginId(){
+  return GetSessionStorageItem('loginId')
 }
 
 // Setters
@@ -62,12 +62,15 @@ export function SetJWTs(jwts){
 export function SetUsername(username){
   SetSessionStorageItem("username", username)
 }
+export function SetAccountType(accountType){
+  SetSessionStorageItem("accountType", accountType)
+}
 /** 
  * Set the user's email is session storage
  * @param {string} email The user's email
  */
-export function SetUserEmail(email){
-  SetSessionStorageItem('email', email)
+export function SetLoginId(loginId){
+  SetSessionStorageItem('loginId', loginId)
 }
 /** Delete the user's data from the session */
 export function DeleteUserDetails(){
@@ -76,8 +79,8 @@ export function DeleteUserDetails(){
   DeleteSessionStorageItem('username')
 }
 /** Delete the user's email from the session storage */
-export function DeleteUserEmail(){
-  DeleteSessionStorageItem('email')
+export function DeleteLoginId(){
+  DeleteSessionStorageItem('loginId')
 }
 
 

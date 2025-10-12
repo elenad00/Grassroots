@@ -6,14 +6,6 @@ import styles from "./css/multiuse.module.css";
 import venueData from "../page-content/venues.json";
 import "../functionality/types"
 
-/**
- * @typedef {Object} CardData
- * @prop {string} name The artist/venue name
- * @prop {string} bio The artist/venue bio
- * @prop {string} imagePath The path to the artist/venue image
- * @prop {ButtonContent} buttonContent The content of the artist button
- */
-
 /** Creates a navigation button that will take the user to another page
  * @param {Object} parameters The parameters parsed to the item
  * @param {ButtonContent} parameters.content The button's content
@@ -28,7 +20,6 @@ export function NavButton ({content}){
     </button>
   )
 };
-
 /** Creates the heading for the page or page element
  * @param {Object} parameters The parameters parsed to the item
  * @param {(HeaderContent | string)} parameters.page The page's title
@@ -81,30 +72,37 @@ export function PageElement({title, display, children, subclass}){
     </div>
   )
 }
-
-/**
- * Gets the required pageData for the pageData cards
- * @param {DataItem[]} pageData The pageData to pull the card elements from
- * @param {string} dataName The name of the dataset the cards are being generated for
- * @returns {CardData[]} The content for the pageData cards
- */
-function GenerateCards(pageData, dataName){
-  const cards = Object.entries(pageData).map(([k, v]) => ({
-    name: v.name,
-    bio: v.bio,
-    imagePath: v.imagePath,
-    buttonContent: {
-      link: `/${dataName}/${k}`, 
-      title: "Learn More"
-    }
-  }));
-  return cards;
+/** Creates a card containing the data about a artist/venue
+ * @param {object} parameters
+ * @param {string} parameters.username The artist/venue username
+ * @param {DataItem} parameter.date The artist/venue data 
+ * @returns {React.ReactElement} The populated data card */
+function DataCard({username, data}){
+  const buttonContent = {
+    link: username, 
+    title: "Learn More"
+  }
+  return(
+    <div className={styles.dataCard}>
+      <img src={data.imagePath} />
+      <h2>{data.name}</h2>
+      <p>{data.bio}</p>
+      <NavButton content={buttonContent} />
+    </div>
+  )
 }
-export const ArtistCards = GenerateCards(artistData, "artists");
-export const VenueCards = GenerateCards(venueData, "venues");
+/** Returns a card pack of all the artists/venues
+ * @param {DataItem[]} pageData The pageData to pull the card elements from
+ * @returns {React.ReactElement[]} The content for the pageData cards */
+function GenerateCards(pageData){
+  return Object.entries(pageData).map(([k, v]) => (
+    <DataCard username={k} data={v} key={k}/>
+  ));
+}
+export const ArtistCards = GenerateCards(artistData);
+export const VenueCards = GenerateCards(venueData);
 
-/**
- * Creates an image carousel for the given pageData
+/** Creates an image carousel for the given pageData
  * @param {object} parameters the function's parameters
  * @param {DataItem[]} parameters.pageData The artist/venue pageData
  * @param {string} parameters.dataType The pageData type (artist/venue)

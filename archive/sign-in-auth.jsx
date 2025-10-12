@@ -1,4 +1,4 @@
-import { DeleteUserEmail, SetJWTs, SetUsername } from "../client/src/functionality/session-storage";
+import { DeleteUserLoginId, SetJWTs, SetUsername } from "../client/src/functionality/session-storage";
 import { ExchangeAuthCode, ExchangeOTP } from "../client/src/functionality/api-routes";
 import { NavButton, PageContent, PageElement, Loader } from "../client/src/components/multiuse-elements";
 import styles from "../css/authentication.module.css"

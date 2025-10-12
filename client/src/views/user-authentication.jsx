@@ -1,26 +1,12 @@
-import { 
-  DeleteUserEmail, 
-  DeleteUserDetails, 
-  SetJWTs, 
-  SetUsername, 
-  SetUserEmail
-} from "../functionality/session-storage";
-import { FaApple, FaGoogle, FaGithub, FaMicrosoft}  from "react-icons/fa";
-import {
-  ExchangeAuthCode,
-  ExchangeOTP,
-  InitialiseOauth,
-  InitialiseOTPAuth,
-  SignUserOut
-} from "../functionality/api";
+import { ExchangeAuthCode, ExchangeOTP, SignUserOut } from "../functionality/api";
 import { Loader, NavButton, PageContent, PageElement } from "../components/multiuse-elements";
+import { DeleteUserDetails, SetJWTs, SetUsername, SetAccountType } from "../functionality/session-storage";
 import styles from "../css/authentication.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useParams, useSearchParams } from "react-router";
 import "../functionality/types";
 
-/**
- * Handle the API Response
+/** Handle the API Response
  * @param {APIResponse} resp The response from the API
  * @param {function} setErrorLine Set the error line on the relevant page
  * @param {function} setIsLoading Set the relevant page to be loading/stop loading
@@ -34,37 +20,35 @@ function HandleResponse(resp, setErrorLine, setIsLoading){
     } else if(error.code == "E061103"){
       setErrorLine("Oops - looks like you've tried too many times with that code");
     } else {
-      setErrorLine("Hmm, looks like that passcode isn't correct!");
+      setErrorLine("Looks like there was an error!");
     }
     console.log(`[${error.status}] ${error.code}: ${error.message} `)
   } else if (data) {
     const {jwts, userData} = data;
     SetJWTs(jwts);
-    if (!userData.firstSeen){
+    if (!userData.firstSeen && userData.username){
       SetUsername(userData.username);
+      SetAccountType(userData.accountType);
       window.location.href = "/user/profile";
     } else {
-      window.location.href = "/user/join";
+      window.location.href = "/sign-in/create";
     }
   }
   setIsLoading(false);
 }
-
 /** Renders the OAuth Page or redirects the user to the relevant sign in page
  * @returns {React.ReactElement}
  */
 function AuthOAuth(){
   const [searchParams, _] = useSearchParams();
-  const [errorLine, setErrorLine] = useState(false)
+  const [errorLine, setErrorLine] = useState(false);
+  const [isLoading , setIsLoading] = useState(true);
   const token = searchParams.get("code");
-  
   async function ExchangeTokens(){
     const resp = await ExchangeAuthCode(token);
-    HandleResponse(resp, setErrorLine)
+    HandleResponse(resp, setErrorLine, setIsLoading)
   }
-  
   ExchangeTokens()
-
   return (
     <PageContent>
       {errorLine &&
@@ -76,46 +60,26 @@ function AuthOAuth(){
     </PageContent>
   )
 }
-
 /** Render the OTP Screen for when email/otp is chosen as the login method
  * @returns {React.ReactElement} The OTP Screen
  */
 function AuthOTP(){
-  /** 
-   * @typedef {bool} isLoading is the page loading? 
-   * @typedef {function} setIsLoading set isLoading
-   * */
   const [isLoading, setIsLoading] = useState(false);
-  /** 
-   * @typedef {string} errorLine the error to display to the user 
-   * @typedef {function} setErrorLine set errorLine
-   * */
   const [errorLine, setErrorLine] = useState(false);
-  /** 
-   * @typedef {bool} errorRaised has an error been raised? 
-   * @typedef {function} setErrorRaised set errorRaised
-   * */
   const [errorRaised, setErrorRaised] = useState(false);
-  /** 
-   * An array of length 6,
-   * with each item being a reference that is then linked to an input cell 
-  */
+  /** An array of length 6, with each item being a reference that is then linked to an input cell */
   const inputRefs = Array.from({length:6},(v,k)=>useRef(null));
-
   /** Check to see if the verification code is complete yet */
   function checkCode(){
-    /** 
-     * Submit the code to the API, and handle the API's response
-     * @async 
+    /** Submit the code to the API, and handle the API's response
      * @function submitCode
-     * @param {string} code the code entered by the user
-     */
+     * @param {string} code the code entered by the user */
     async function submitCode(code){
       setIsLoading(true);
       const resp = await ExchangeOTP(code);
       HandleResponse(resp, setErrorLine, setIsLoading)
     };
-    /** @type {Array} */
+
     const code = inputRefs.map((r) => r.current.value);
     // filter the code for only integers
     if(code.filter((value) => /[0-9]/.test(value)).length == 6){
@@ -123,22 +87,18 @@ function AuthOTP(){
     } 
   };
 
-  /** 
-   * format the cell with index i and raise an error depending on if the input if valid
+  /** format the cell with index i and raise an error depending on if the input if valid
    * @param {int} i - the index of the cell
-   * @param {bool} isValid - if the content of cell i is valid 
-   */
+   * @param {bool} isValid - if the content of cell i is valid */
   function formatCell(i, isValid){
     inputRefs[i].current.className = isValid ? styles.input : styles.badInput ;
     setErrorRaised(!isValid)
   }
-  /** 
-   * Handle when a use inputs a value into a cell. 
+  /** Handle when a use inputs a value into a cell. 
    * If the value is a keypress, handle only backspaces
    * If the value is a string, check it is a int then add to the code. 
    * @param {Object} e the reference from the input box; either Keyboard Event or ChangeEvent
-   * @param {int} i the index of the cell being handled
-   */
+   * @param {int} i the index of the cell being handled*/
   function handleInput(e, i){
     if (e.keyCode){
       if (e.keyCode == 8){
@@ -200,102 +160,6 @@ export function SignInAuth(){
     )
   }
 }
-
-/** Render the sign in page
- * @returns {React.ReactElement}
- */
-export function SignIn(){
-  const [errorLine, setErrorLine] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [pageContent, setPageContent] = useState(Loader);
-  
-  /** The possible OAuth Methods */
-  const authMethods = {
-    apple: <FaApple />,
-    github: <FaGithub />,
-    google: <FaGoogle />,
-    microsoft: <FaMicrosoft />
-  }
-  /** The sign in page to render to the user */
-  const SignInPage = (
-    <PageElement>
-      <div className={styles.emailContainer}>
-        <h4> Use Email </h4>
-        <form action={verifyEmail}>
-          <input name="userEmail" />
-          <button type="submit">Sign In</button>
-        </form>
-      </div>
-      <div className={styles.oauthContainer}>
-        <h4> Use OAuth </h4>
-        <div>
-          {Object.entries(authMethods).map(([provider, icon]) => (
-            <button onClick={()=>(callAPI(provider, false))} key={provider}>
-              {icon}
-            </button>
-          ))}
-        </div>
-      </div>
-      <p>{errorLine}</p>
-    </PageElement>
-  )
-  /** Calls the API to initialise the next steps of the authentication process
-   * @param {(string|false)} provider The provider the user has chosen
-   * @param {(string|false)} email The user's email
-  */
-  async function callAPI(provider, email){
-    setIsLoading(true)
-    let resp;
-    if(provider){
-      resp = await InitialiseOauth(provider);
-    } else {
-      SetUserEmail(email)
-      resp = await InitialiseOTPAuth(email);
-    }
-    /** @type {APIResponse} */
-    const {error, data} = resp;
-    if (error) {
-      DeleteUserEmail()
-      error.status < 500
-      ? setErrorLine("authentication error while signing in - please try again")
-      : setErrorLine("server error while signing in - try again in a little while")
-      console.error(`[${error.status}] ${error.code}: ${error.message} during sign in`)
-    } else if (data) {
-      data.url
-      ? window.location.href = data.url
-      : window.location.href = "/sign-in/auth/otp"
-    }
-  }
-  /** Verifies the email address entered by the user against an email regex
-   * @param {FormData} formData 
-  */
-  function verifyEmail(formData){
-    /** email The user's entered email address */
-    const email = toString(formData.get("userEmail"));
-    /** Establish the email regex - matches xyz@abc.(com|gov.uk|co.uk|edu.uk|ac.uk) */
-    const re = /[\d\w]+@[\w]+\.(?:(?:com)|(?:gov|co|edu|ac)\.uk)/;
-    re.test(email)
-    ? callAPI(false, email)
-    : setErrorLine(
-        "looks like there's an error with that email address! currently we only accept .com or .uk emails"
-      );
-  }
-  // Triggered when the value of isLoading changes and changes the page content
-  useEffect(() => {
-    if(isLoading){
-      setPageContent(Loader)
-    } else {
-      setPageContent(SignInPage)
-    }
-  },[isLoading])
-
-  return(
-    <PageContent page="sign-in">
-      {pageContent}
-    </PageContent>
-  )
-}
-
 /** Sign the user out and return them to the home page */
 export function SignOut(){
   const [errorMessage, setErrorMessage] = useState();
