@@ -178,7 +178,7 @@ export function SignOut(){
   }
   return (
     <PageContent>
-      <PageElement>
+      <PageElement subclass={styles.signOut}>
         <h2> Are you sure you wish to sign out? </h2>
         <div className={styles.signOutButtons}>
           <button onClick={()=>(window.location.href = "/")}>

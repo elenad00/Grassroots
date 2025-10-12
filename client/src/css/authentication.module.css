@@ -141,3 +141,23 @@
 .signOutButtons .signout:hover{
   background: #98af88;
 }
+
+/* Mobile */
+@media only screen and (max-width: 428px) {
+  .signOut{
+    margin-top: 2em;
+  }
+  .signOutButtons{
+    flex-direction: column;
+    gap: 1em;
+  }
+  .signOutButtons .signout{
+    background: #aabd9c;
+  }
+  .signOutButtons button{
+    font-size: 1em;
+  }
+  .signOutButtons button:active{
+    font-weight: 600;
+  }
+}

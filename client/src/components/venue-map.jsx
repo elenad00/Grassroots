@@ -45,7 +45,6 @@ function VenueMap({center, zoom, venues}){
     venueData.username = k
     markers.push(<VenueMarker key={k} venue={venues[k]}/>)
   }
-
   return (
     <MapContainer center={center} zoom={zoom} worldCopyJump={false}>
       {/* Set the map's attribution as well as importing the map itself */}
@@ -64,8 +63,9 @@ export function AllVenuesMap({}){
   />
 }
 export function SingleVenueMap({venue}){
+  const [k, data] = Object.entries(venue)[0];
   return <VenueMap 
-    center={venue.item.coordinates} 
+    center={data.coordinates} 
     zoom={16} 
     venues={venue}
   />

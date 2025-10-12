@@ -10,14 +10,18 @@ import venueData from "../page-content/venues.json";
  * @returns {React.ReactElement} */
 export default function SingleValuePage () {
   const [data, setData] = useState();
-  const [pageType, setPageType] = useState()
+  const [pageType, setPageType] = useState();
+  const [pageHeading, setPageHeading] = useState("")
   const [isLoading, setIsLoading] = useState(true);
+  const [username, setUsername] = useState('')
   
   useEffect(()=>{
     const [_, type, item] = window.location.pathname.split('/');
     const pageData = type == 'artists' ? artistData[item] : venueData[item];
     setPageType(type);
+    setPageHeading(pageData.name)
     setData(pageData);
+    setUsername(item)
     setIsLoading(false);
   }, [])
 
@@ -50,7 +54,8 @@ export default function SingleValuePage () {
   }
 
   function VenueLocation(){
-    const venueData = {item: data};
+    const venueData = {};
+    venueData[username] = data;
     return(
       <PageElement subclass={styles.location} title={{"heading":"Find Us"}}>
         <PageElement subclass={styles.mapHolder}>
@@ -71,7 +76,7 @@ export default function SingleValuePage () {
   )
   
   return(
-    <PageContent page={{heading:data.name}}>
+    <PageContent page={{heading:pageHeading}}>
       {isLoading
         ? Loader 
         : PageElements}

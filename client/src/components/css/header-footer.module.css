@@ -130,6 +130,7 @@ the mic icon is hovered over */
     font-size: 1.5em;
   }
   .dropdownList{
+    background-color: #9bb28c;
     padding-right: 1em;
     padding-top: 0em;
   }

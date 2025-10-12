@@ -51,3 +51,18 @@ li {
   margin: 0;
   padding: 0;
 }
+
+@media only screen and (max-width: 428px) {
+  a, p, h5{
+    font-size: 1em;
+  }
+  h1{
+    font-size: 1.6em;
+  }
+  h2, h3, h4{
+    font-size: 1.3em;
+  }
+  h3{
+    padding-top: .2em;
+  }
+}

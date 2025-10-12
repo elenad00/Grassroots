@@ -83,7 +83,40 @@
   margin-top: .25em;
   opacity: 0;
 }
-.uploadImageButton:hover + .elementNotEnabled{
+.uploadImageButton:hover + .elementNotEnabled,
+.uploadImageButton:active + .elementNotEnabled{
   visibility: visible;
   opacity: 1
+}
+
+/* Mobile */
+@media only screen and (max-width: 428px) {
+  .profileElementContainer{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+  }
+  .profileElementContainer button {
+    font-size: .8em;
+    margin-top: .75em;
+  }
+  .settingsHolder{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .settingsItem{
+    margin: 0;
+  }
+  .userInfo{
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+  .userInfo img{
+    max-width: 50%;
+  }
+  .userFavourites{
+    gap: .5em;
+  }
 }

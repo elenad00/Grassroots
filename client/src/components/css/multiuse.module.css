@@ -144,22 +144,16 @@
 /* Mobile */
 @media only screen and (max-width: 428px) {
   .pageContent{
-    min-height: 800px;
+    min-height: 500px;
     padding: .5em 1em;
   }
   .pageElement{
-    min-height: fit-content;
+    height: fit-content;
   }
-  .pageElement p{
-    font-size: 1em;
+  .navButton:focus{
+    font-weight: 600;
   }
-  .header h1{
-    font-size: 1.5em;
-  }
-  .header h5{
-    font-size: 1em;
-  }
-  .navButton{
-    font-size: .9em;
+  .dataCard img{
+    max-height: 15em;
   }
 }
