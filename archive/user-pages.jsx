@@ -1,5 +1,5 @@
-import { NavButton, PageElement, Loader } from "./multiuse-elements";
-import styles from "../css/user-page.module.css";
+import { NavButton, PageElement, Loader } from "../client/src/components/multiuse-elements";
+import styles from "./css/user-pages.module.css";
 
 export function Settings ({userData}) {
   const photo = userData.picture || false;
@@ -37,12 +37,12 @@ export function Settings ({userData}) {
 };
 
 function MapFavourites(favourites){
-  return favourites.map((favourite) => {
+  return favourites.map((favourite) => 
     <>
       <img src={favourite.picture}></img>
       <p>{favourite.name}</p>
     </>
-  })
+  )
 }
 
 export function Favourites ({favourites}) {

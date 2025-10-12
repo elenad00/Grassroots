@@ -1,12 +1,13 @@
 import artistData from "../page-content/artists.json";
 import { FaInstagram } from "react-icons/fa";
-import { GenerateCarousel } from "../components/data-returns";
-import { LoadingPage, PageContent, PageElement } from "../components/multiuse-elements";
+import { ImageCarousel, Loader, PageContent, PageElement } from "../components/multiuse-elements";
 import { SingleVenueMap } from "../components/venue-map";
 import styles from "../css/single-value-page.module.css";
 import { useEffect, useState } from "react";
 import venueData from "../page-content/venues.json";
 
+/** Returns a single value page, eg a page dedicated to a single artist or venue
+ * @returns {React.ReactElement} */
 export default function SingleValuePage () {
   const [data, setData] = useState();
   const [pageType, setPageType] = useState()
@@ -14,15 +15,10 @@ export default function SingleValuePage () {
   
   useEffect(()=>{
     const [_, type, item] = window.location.pathname.split('/');
-    setPageType(type)
-    if(type == 'artists'){
-      let artist = artistData[item]
-      setData(artist)
-    } else{
-      let venue = venueData[item]
-      setData(venue)
-    }
-    setIsLoading(false)
+    const pageData = type == 'artists' ? artistData[item] : venueData[item];
+    setPageType(type);
+    setData(pageData);
+    setIsLoading(false);
   }, [])
 
   function About(){
@@ -42,7 +38,7 @@ export default function SingleValuePage () {
   function Shows(){
     let upcomingData;
     if (data.showList){
-      upcomingData = <GenerateCarousel data={data.showList} />
+      upcomingData = <ImageCarousel data={data.showList} dataType={pageType} />
     } else{
       upcomingData = <h4> Looks like there's no upcoming shows! </h4>
     }
@@ -64,18 +60,21 @@ export default function SingleValuePage () {
     )
   }
 
-  if(isLoading){
-    return <LoadingPage />
-  }
+  const PageElements = (
+    <PageElement className={styles.venuePage}>
+      <About />
+      <PageElement>
+        <Shows />
+        {pageType=='venues' && <VenueLocation />}
+      </PageElement>
+    </PageElement>
+  )
+  
   return(
     <PageContent page={{heading:data.name}}>
-      <div className={styles.venuePage}>
-        <About />
-        <PageElement>
-          <Shows />
-          {pageType=='venues' && <VenueLocation />}
-        </PageElement>
-      </div>
+      {isLoading
+        ? Loader 
+        : PageElements}
     </PageContent>
   )
 };

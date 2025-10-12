@@ -1,46 +1,31 @@
-import { NavButton, PageContent, PageElement } from "../components/multiuse-elements";
-// import { ImageCarousel } from "../components/image-carousel";
-import { ArtistCarousel, VenueCarousel } from "../components/data-returns";
+import {
+  ArtistCarousel, 
+  NavButton, 
+  PageContent, 
+  PageElement, 
+  VenueCarousel 
+} from "../components/multiuse-elements";
 import data from "../page-content/homepage.json";
 
 export default function Homepage (){
-  const carousels = [VenueCarousel, ArtistCarousel]
-  return(
+  const carousels = [false, VenueCarousel, ArtistCarousel, false]
+  const missionBlocks = (
+    Object.entries(data.our_mission.blocks).map(([k,v], i) => 
+      <div key={i}>
+        <h3>{`For ${k}`}</h3>
+        <p>{v}</p>
+      </div>
+    )
+  )
+  return (
     <PageContent>
-      <PageElement title={data.welcome.header}>
-        <NavButton content={data.welcome.button} />
-      </PageElement>
-      {[data.venues, data.artists].map((data, i) => {
-        return (
-          <PageElement title={data.header}>
-            { carousels[i] }
-            <NavButton content={data.button} />
-          </PageElement>
-        )
-      })}
-      <PageElement title={data.mission.header}>
-        {['venues','artists','fans'].map((block) => {
-          const data = data.mission[block]
-          <h3>{data.heading}</h3>
-          <p>{data.content}</p>
-        })}
-      </PageElement>
+      {Object.entries(data).map(([k,v], i) => (
+        <PageElement title={v.header} key={i}>
+          { carousels[i] }
+          { v.button && <NavButton content={v.button} /> }
+          { i==3 && missionBlocks}
+        </PageElement>
+      ))}
     </PageContent>
   )
-  // return (
-  //   <PageContent page={false}>
-  //     <PageElement title={}
-  //     {data.items.map((content, i) => {
-  //       const panelTitle = {
-  //         heading: content.title, 
-  //         subheading: content.description
-  //       }
-  //       return (
-  //         <PageElement title={panelTitle} key={i}>
-  //           <Panel content={content} />
-  //         </PageElement>
-  //       )
-  //     })}
-  //   </PageContent>
-  // )
 }

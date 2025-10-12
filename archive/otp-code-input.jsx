@@ -1,6 +1,5 @@
-import { useState } from "react";
 import styles from "../css/login.module.css";
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function OTPInput ({setCompleteCode}){
   // init the reference for the error message

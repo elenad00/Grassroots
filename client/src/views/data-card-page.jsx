@@ -1,9 +1,7 @@
-import { ArtistCards, VenueCards } from "../components/data-returns";
-import { PageContent, PageElement } from "../components/multiuse-elements";
-import { NavButton } from "../components/multiuse-elements";
+import { AllVenuesMap } from "../components/venue-map";
+import { ArtistCards, NavButton, PageContent, PageElement, VenueCards } from "../components/multiuse-elements";
 import styles from "../css/data-cards.module.css";
 import { useEffect, useState } from "react";
-import { AllVenuesMap } from "../components/venue-map";
 
 export default function DataCardPage() {
 	const [cardPack, setCardPack] = useState();

@@ -1,8 +1,8 @@
 import { FaApple, FaGithub, FaGoogle, FaMicrosoft } from "react-icons/fa";
-import { InitialiseOauth, InitialiseOTPAuth } from "../functionality/api-routes";
-import { Loader, PageContent, PageElement } from "../components/multiuse-elements";
+import { InitialiseOauth, InitialiseOTPAuth } from "../client/src/functionality/api-routes";
+import { Loader, PageContent, PageElement } from "../client/src/components/multiuse-elements";
 import { useEffect, useState } from "react";
-import { DeleteUserEmail, SetUserEmail } from "../functionality/session-storage";
+import { DeleteUserEmail, SetUserEmail } from "../client/src/functionality/session-storage";
 import styles from "../css/login.module.css";
 
 function OAuthSignin({setResp, setIsLoading}){
@@ -89,26 +89,29 @@ function HandleResponse(resp, setErrorLine){
     }
   }
 }
+
 export default function SignIn(){
   const [errorLine, setErrorLine] = useState();
   const [resp, setResp] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  
+  const [pageContent, setPageContent] = useState(Loader)
+
+  useEffect(()=>{
+    setPageContent(
+      <>
+        <EmailSignin />
+        <OAuthSignin />
+      </>
+    )
+  },[])
   useEffect(()=>{
     if (resp){
       HandleResponse(resp, setErrorLine)
     }
   }, [resp])
 
-  let pageContent;
-  if(isLoading){
-    pageContent = (
-      <PageElement>
-        {Loader}
-      </PageElement>
-    )
-  } else{
-    pageContent = (
+  if(!isLoading){
+    setPageContent(
       <>
         <EmailSignin setResp={setResp} setErrorLine={setErrorLine} setIsLoading={setIsLoading}  />
         <OAuthSignin setResp={setResp} setIsLoading={setIsLoading} />

@@ -1,10 +1,9 @@
-
 import { Icon } from 'leaflet'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { NavButton } from "./multiuse-elements";
 import styles from "../css/data-cards.module.css";
 import venueData from "../page-content/venues.json";
-import "../css/leaflet.css";
+import "./css/leaflet.css";
 
 function VenueMarker ({venue}) {
   const iconConfig = {

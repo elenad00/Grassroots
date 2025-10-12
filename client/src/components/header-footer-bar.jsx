@@ -1,81 +1,55 @@
 import { FaInstagram } from 'react-icons/fa';
 import { GetUsername, TouchJWT } from "../functionality/session-storage";
 import { PiMicrophoneStageBold } from "react-icons/pi";
-import styles from "../css/header-footer.module.css";
+import styles from "./css/header-footer.module.css";
 import { useEffect, useState } from "react";
 
 export function HeaderBar () {
-  const [username, setUsername] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [inBody, setInBody] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [dropOpen, setDropOpen] = useState(false)
   const [dropdownStyle, setDropdownStyle] = useState(styles.dropdownList);
   const [subStyle, setSubstyle] = useState("");
-  
-  window.addEventListener("scroll", scFunc);
+  const [dropdownLinks, setDropdownLinks] = useState(
+    <div><li><a href='/sign-in'>Sign In</a></li></div>
+  )
+  window.addEventListener("scroll", scrollFunction);
 
-  function scFunc(){
-    if (this.scrollY >= 50 && !inBody){
-      setInBody(true);
-    } else if (this.scrollY < 50 && inBody ){
-      setInBody(false)
+  function scrollFunction(){
+    if (this.scrollY>=50){
+      setSubstyle(styles.userScrolled)
+    } else if (this.scrollY<49){
+      setSubstyle("")
     }
   }
 
-  useEffect(()=>{
-    inBody 
-    ? setSubstyle(styles.userScrolled)
-    : setSubstyle("")
-  }, [inBody])
-
-  useEffect(()=>{
-    if (dropOpen){
-      setDropdownStyle()
-    } else {
-      setDropdownStyle(styles.dropdownList)
-    }
-  },[dropOpen])
-
   useEffect(() => {
-    const storedUsername = GetUsername();
-    if(storedUsername){
-      setLoggedIn(true)
-      setUsername(storedUsername)
-    } else if (TouchJWT()){
-      setLoggedIn(true)
-      setUsername('grassroots user')
+    const jwt = TouchJWT()
+    if(jwt){
+      const username = GetUsername() || 'grassroots user'
+      setDropdownLinks((
+        <div>
+          <li key={0}><a href='/user/profile'>{username}</a></li>
+          <li key={1}><a href='/user/settings'>user settings</a></li>
+          <li key={2}><a href='/sign-out'>sign out</a></li>
+        </div>
+      ))
     }
-    setIsLoading(false);
   }, [])
 
-  if(!isLoading){
-    return(
-      <nav className={`${styles.headerBar} ${subStyle}`}>
-        <a href='/' className={styles.branding}>grassroots</a>
-        <a className={styles.venues} href="/venues">our venues</a>
-        <a className={styles.artists}  href="/artists">our artists</a>
-        <button onClick={(current)=>setDropOpen(!current)} className={styles.micIcon}>
-          <PiMicrophoneStageBold />
-        </button>
-        <div className={`${dropdownStyle} ${subStyle}`}>
-          {loggedIn 
-            ? (
-              <div>
-                <a href='/user/profile'>{username}</a>
-                <a href='/user/settings'>User Settings</a>
-                <a href='/sign-out'>Sign Out</a>
-              </div>
-            ):(
-              <div>
-                <a href='/sign-in'>Sign In</a>
-              </div>
-            )
-          }
-        </div>     
-      </nav>
-    )
-  };
+  return(
+    <nav className={`${styles.headerBar} ${subStyle}`}>
+      <a href='/' className={styles.branding}>grassroots</a>
+      <a className={styles.venues} href="/venues">our venues</a>
+      <a className={styles.artists}  href="/artists">our artists</a>
+      <button 
+        onClick={()=>setDropdownStyle(styles.dropdownList)} 
+        className={styles.micIcon}
+      >
+        <PiMicrophoneStageBold />
+      </button>
+      <div className={`${dropdownStyle} ${subStyle}`}>
+        {dropdownLinks}
+      </div>     
+    </nav>
+  )
 };
 
 export function FooterBar () {

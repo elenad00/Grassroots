@@ -1,14 +1,27 @@
 import artistData from "../page-content/artists.json";
-import data from "../page-content/page-headers.json";
 import { Link } from "react-router";
+import pageData from "../page-content/page-headers.json";
 import { ScaleLoader } from "react-spinners";
-import styles from "../css/multiuse.module.css";
+import styles from "./css/multiuse.module.css";
 import venueData from "../page-content/venues.json";
+import "../functionality/types"
 
-// Nav Button
+/**
+ * @typedef {Object} CardData
+ * @prop {string} name The artist/venue name
+ * @prop {string} bio The artist/venue bio
+ * @prop {string} imagePath The path to the artist/venue image
+ * @prop {ButtonContent} buttonContent The content of the artist button
+ */
+
+/** Creates a navigation button that will take the user to another page
+ * @param {Object} parameters The parameters parsed to the item
+ * @param {ButtonContent} parameters.content The button's content
+ * @returns {React.ReactElement} The navigation button
+ */
 export function NavButton ({content}){
   return (
-    <button  className={styles.navButton}>
+    <button className={styles.navButton}>
       <Link to={content.link}> 
         {content.title}
       </Link>
@@ -16,14 +29,18 @@ export function NavButton ({content}){
   )
 };
 
-// Page Elements
+/** Creates the heading for the page or page element
+ * @param {Object} parameters The parameters parsed to the item
+ * @param {(HeaderContent | string)} parameters.page The page's title
+ * @returns {React.ReactElement} The page header element
+ */
 function PageHeader({page}){
-  let headingItems = false;
-  
-  typeof page == "string" 
-    ? headingItems = data[page]
-    : headingItems = page
-  
+  /** @type {HeaderContent} */
+  const headingItems = (
+    typeof page == "string" 
+    ? pageData[page]
+    : page
+  )
   return (
     <div className={styles.header}>
       <h1>{headingItems.heading}</h1>
@@ -31,6 +48,12 @@ function PageHeader({page}){
     </div>
   )
 }
+/** Creates a div object that holds the page's content
+ * @param {Object} parameters The parameters parsed to the item
+ * @param {(HeaderContent | string | false)} parameters.page The page's title
+ * @param {React.ReactElement} parameters.children The items that are contained within the page content
+ * @returns {React.ReactElement} A div that holds the main page content
+ */
 export function PageContent({page, children}){
   return (
     <div className={styles.pageContent}>
@@ -39,6 +62,14 @@ export function PageContent({page, children}){
     </div>
   )
 }
+/** Creates a div object that holds the page's content
+ * @param {Object} parameters The parameters parsed to the item
+ * @param {(HeaderContent | string | false)} parameters.title The page's title
+ * @param {string} parameters.display The flex direction of the element
+ * @param {React.ReactElement} parameters.children The items that are contained within the page content
+ * @param {any} parameters.subclass The secondary style to be applied to the element
+ * @returns {React.ReactElement} A div that holds a page element
+ */
 export function PageElement({title, display, children, subclass}){
   let style = `${styles.pageElement}`
   style += display ? ` ${styles.pageElementRow}` : '';
@@ -51,61 +82,52 @@ export function PageElement({title, display, children, subclass}){
   )
 }
 
-// Generate All Data Cards
-function GenerateCards(data, dataName){
-  let cards = [];
-  for (let k in data){
-    const d = data[k];
-    cards.push({
-      name: d.name,
-      bio: d.bio,
-      imagePath: d.imagePath,
-      buttonContent: {
-        link: `/${dataName}/${k}`, 
-        title: "Learn More"
-      }
-    })
-  };
+/**
+ * Gets the required pageData for the pageData cards
+ * @param {DataItem[]} pageData The pageData to pull the card elements from
+ * @param {string} dataName The name of the dataset the cards are being generated for
+ * @returns {CardData[]} The content for the pageData cards
+ */
+function GenerateCards(pageData, dataName){
+  const cards = Object.entries(pageData).map(([k, v]) => ({
+    name: v.name,
+    bio: v.bio,
+    imagePath: v.imagePath,
+    buttonContent: {
+      link: `/${dataName}/${k}`, 
+      title: "Learn More"
+    }
+  }));
   return cards;
 }
 export const ArtistCards = GenerateCards(artistData, "artists");
 export const VenueCards = GenerateCards(venueData, "venues");
 
-// Generate Image Carousel
-export function ImageCarousel ({data, dataType}) {
+/**
+ * Creates an image carousel for the given pageData
+ * @param {object} parameters the function's parameters
+ * @param {DataItem[]} parameters.pageData The artist/venue pageData
+ * @param {string} parameters.dataType The pageData type (artist/venue)
+ * @returns {React.ReactElement} The image carousel element
+ */
+export function ImageCarousel({pageData, dataType}){
   return (
     <div className={styles.carousel}>
-      { Object.values(data).forEach((item, i) => {
-        const value = data[item]
-        const userLink = `/${dataType}/${value.username}`;
-        return(
-          <a href={userLink} className={styles.carouselItem}>
-            <img src={value.imagePath} />
-            <h3>{value.name}</h3>
-          </a>
-        )
-      })}
+      {Object.entries(pageData).map(([k, v], i) => (
+        <a href={`/${dataType}/${k}`} className={styles.carouselItem} key={i}>
+          <img src={v.imagePath} />
+          <h3>{v.name}</h3>
+        </a>
+      ))}
     </div>
   );
-};
-export const ArtistCarousel = <ImageCarousel data={artistData} dataType='artists' />;
-export const VenueCarousel = <ImageCarousel data={venueData} dataType='venues' />;
-
-// Loaders
-export const Loader = (
-  <ScaleLoader 
-    width={5} 
-    height={80} 
-    color="#000000ff" 
-    barCount={10}
-  />
-)
-export function LoadingPage(){
-  return(
-    <PageElement>
-      <PageContent>
-        {Loader}
-      </PageContent>
-    </PageElement>
-  )
 }
+export const ArtistCarousel = <ImageCarousel pageData={artistData} dataType='artists' />;
+export const VenueCarousel = <ImageCarousel pageData={venueData} dataType='venues' />;
+
+/** A loading element to indicate that the page content is loading */
+export const Loader = (
+  <PageElement>
+    <ScaleLoader width={5} height={80} color="#000000ff" barCount={10}/>
+  </PageElement>
+)

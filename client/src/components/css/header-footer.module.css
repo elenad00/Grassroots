@@ -31,7 +31,9 @@ navigates through the site */
   position: -webkit-sticky;
   top: 0;
 }
-.headerBar a{
+.headerBar a,
+.dropdownList div a{
+  font-size: 1.2em;
   font-family: "DM Serif Display";
 }
 .headerBar a:hover,
@@ -54,32 +56,30 @@ navigates through the site */
 
 /* Set the styling for the dropdown items */
 .dropdownList{
-  text-align: right;
-  flex-direction: column;
   opacity: 0;
   padding: .25em 3em 1.5em 1.5em;
   position: fixed;
   right: 0;
-  top: 3.8em;
+  text-align: right;
+  top: 3.5em;
   visibility: hidden;
 }
-
-.dropdownList a{
-  font-size: 1.2em;
+.dropdownList div{
+  display: block;
+  width: fit-content;
 }
-
 .userScrolled{
   background-color: white;
   background-image: none;
   box-shadow: 0 6px 14px -7px #0000001a;
 }
-
 /* Set the dropdown content to be visible when 
 the mic icon is hovered over */
 .micIcon:hover + .dropdownList,
 .micIcon:focus-within + .dropdownList,
 .micIcon:focus + .dropdownList,
-.dropdownList:hover 
+.dropdownList:hover,
+.dropdownList div:hover 
 .dropdownVisible{
   opacity: 1;
   visibility: visible;

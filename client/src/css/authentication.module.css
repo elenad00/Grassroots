@@ -1,5 +1,5 @@
 @keyframes fade {
-  0%,100% { opacity: 0 }
+  0%, 100% { opacity: 0 }
   50% { opacity: 1 }
 }
 
@@ -47,23 +47,23 @@
   text-align: center;
 }
 .emailContainer button:hover,
-.oauthButtons button:hover,
+.oauthContainer div button:hover,
 .signOutButtons button:hover {
   background-color: #b9c9ae;
   cursor: pointer;
 }
 /* OAuth Container */
-.oauthButtons {
+.oauthContainer div {
   justify-content: space-between;
 }
-.oauthButtons button {
+.oauthContainer div button {
   background: none;
   border: none;
   border-radius: 1em;
   margin: 0 1em;
   padding: .25em;
 }
-.oauthButtons button svg{
+.oauthContainer div button svg{
   height: 4em;
   width: 4em;
 }
@@ -76,35 +76,30 @@
   text-align: center;
   width: 100%;
 }
-
-.codeInput{
-  margin-bottom: 1em;
-}
-
-.codeInput input{
+.input,
+.badInput{
   border: none;
   border-radius: .5em;
   font-family: "Lato";
   font-size: 3em;
   margin: .1em;
+  margin-bottom: 1em;
   max-width: .75em;
   padding: .25em;
   text-align: center;
-}
-.input, .badInput{
   transition-duration: .5s;
 }
 .input{
-  background-color: white;}
-
+  background-color: white;
+}
 .badInput{
   background-color: #c6a2a2;
 }
-.error{
+.codeError{
   transition: opacity 0.5s ease-out;
   opacity: 0
 }
-.erroractive{
+.codeErrorActive{
   opacity: 1;
   transition: opacity 0.5s ease-in;
 }
@@ -117,7 +112,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .signOutButtons .signout{
   background: #b9c9ae;
 }

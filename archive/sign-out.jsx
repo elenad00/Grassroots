@@ -1,7 +1,7 @@
-import { DeleteUserDetails } from "../functionality/session-storage";
-import { PageContent, PageElement } from "../components/multiuse-elements"
-import { SignUserOut } from "../functionality/api-routes"
-import styles from "../css/login.module.css";
+import { DeleteUserDetails } from "../client/src/functionality/session-storage";
+import { PageContent, PageElement } from "../client/src/components/multiuse-elements"
+import { SignUserOut } from "../client/src/functionality/api-routes"
+import styles from "../css/authentication.module.css";
 import { useEffect, useState } from "react";
 
 async function PerformSignOut(setResp){
