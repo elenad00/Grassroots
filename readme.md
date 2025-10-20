@@ -36,8 +36,6 @@ The server is where the fun stuff happens. The mini Grassroots server, written u
 In the long term, Grassroots will pivot away from using Descope and instead self-host and manage user credentials. But in order to keep things as simple as possible for the time being, our friends at Descope are doing the hard work for us! 
 
 #### How To Run
-> If you're cloning this from GitHub then you may have noticed the server code isn't available - currently the server is for the Grassroots team only. But, if you're lucky enough to be the person marking my uni submission, then good news! The server should be ready and waiting for you. 
-
 Similar to the steps for the client, use the command line to navigate yourself into the server directory. Once in there, run
 
 `npm install`

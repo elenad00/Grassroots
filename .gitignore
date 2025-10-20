@@ -5,5 +5,9 @@ node_modules/
 .DS_Store
 Config.jsx
 artistImages/
-server/
+references/
+*docker*
+.env
+config*
+jsconfig.json
 archive/
