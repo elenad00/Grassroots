@@ -1,0 +1,41 @@
+.header{
+  align-items: center;
+  background-color: white;
+  display: flex;
+  gap: 2em;
+  max-width: 100vw;
+  padding: 1em 3em;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
+}
+.header a{
+  color: black;
+  font-family: "DM Serif Display";
+  font-size: 1.2em;
+}
+.header a:hover{
+  text-decoration: underline;
+}
+.header .logo{
+  font-size: 2.5em;
+}
+.header .topButton{
+  background-color: #9bb28c;
+  border-radius: 1em;
+  padding: .5em;
+}
+
+@media only screen and (max-width: 428px){
+  .header{
+    gap: 1.5em;
+    padding: 1em;
+  }
+  .header a{
+    font-size: 1em;
+  }
+  .header .logo{
+    font-size: 1.5em;
+  }
+}

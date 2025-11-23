@@ -11,4 +11,5 @@ references/
 config*
 jsconfig.json
 archive/
-newGRL/
+images/
+*.json

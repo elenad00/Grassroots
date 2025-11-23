@@ -1,0 +1,30 @@
+.footer{
+  background-color: #98af88;
+  display: block;
+  max-height: 8em;
+  padding: 0.5em 3em;
+}
+.footer p{
+  line-height: 1.3em;
+}
+.footer a{
+  height: .9em;
+  padding-right: .2em;
+}
+.contactLine{
+  display: inline-flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 428px){
+  .footer{
+    gap: 1.5em;
+    padding: 1em;
+  }
+  .footer h1{
+    font-size: 1.5em;
+  }
+  .footer p{
+    font-size: 1em;
+  }
+}
