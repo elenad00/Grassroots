@@ -8,9 +8,15 @@ export function HeaderBar () {
   const [dropdownStyle, setDropdownStyle] = useState(styles.dropdownList);
   const [subStyle, setSubstyle] = useState("");
   const [dropdownLinks, setDropdownLinks] = useState(
-    <div><li><a href='/sign-in'>sign in</a></li></div>
+    <div>
+      <li>
+        <a href='/sign-in'>sign in</a>
+      </li>
+    </div>
   )
-  window.addEventListener("scroll", scrollFunction);
+  window.addEventListener(
+    "scroll", scrollFunction
+  );
 
   function scrollFunction(){
     if (this.scrollY>=50){

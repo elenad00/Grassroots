@@ -1,10 +1,4 @@
-import {
-  ArtistCarousel, 
-  NavButton, 
-  PageContent, 
-  PageElement, 
-  VenueCarousel 
-} from "../components/multiuse-elements";
+import { ArtistCarousel, NavButton, PageContent, PageElement, VenueCarousel } from "../components/multiuse-elements";
 import data from "../page-content/homepage.json";
 
 export default function Homepage (){
@@ -19,7 +13,7 @@ export default function Homepage (){
   )
   return (
     <PageContent>
-      {Object.entries(data).map(([k,v], i) => (
+      {Object.entries(data).map(([k, v], i) => (
         <PageElement title={v.header} key={i}>
           { carousels[i] }
           { v.button && <NavButton content={v.button} /> }

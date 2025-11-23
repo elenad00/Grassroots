@@ -1,4 +1,5 @@
-import { auth_router } from "./routes/authentication.js";
+import { otp_router } from "./routes/otp-routes.js";
+import { oauth_router } from "./routes/oauth-routes.js";
 import config from "../utils/config.js";
 import cors from "cors";
 import express from "express";
@@ -18,7 +19,8 @@ api.use(cors({
 }));
 
 // Routes
-api.use('/api/v1/auth', auth_router);
+api.use('/api/v1/auth/sign-in/oauth', oauth_router);
+api.use('/api/v1/auth/sign-in/otp', otp_router);
 // api.use('/api/v1/user', userRouter);
 // api.use('/api/v1/artists', artistRouter);
 // api.use('/api/v1/venues', venueRoutes);

@@ -1,6 +1,8 @@
 import artistData from "../page-content/artists.json";
 import { FaInstagram } from "react-icons/fa";
-import { ImageCarousel, Loader, PageContent, PageElement } from "../components/multiuse-elements";
+import {
+  ImageCarousel, Loader, PageContent, PageElement
+} from "../components/multiuse-elements";
 import { SingleVenueMap } from "../components/venue-map";
 import styles from "../css/single-value-page.module.css";
 import { useEffect, useState } from "react";

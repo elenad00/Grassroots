@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import CreateAccount from "../views/user-create-account";
 import DataCardPage from "../views/data-card-page";
+import handle_oauth_token from "../views/user-oauth-authorise";
 import Homepage from "../views/homepage";
 import SignIn from "../views/user-sign-in";
 import { SignInAuth, SignOut } from "../views/user-authentication";
@@ -18,8 +19,9 @@ export function WebpageRoutes () {
         <Route exact path='/artists/:artistName' element={<SingleValuePage />}/>
 
         <Route exact path='/sign-in' element={<SignIn/>} />
-        <Route exact path='/sign-in/auth/:authType' element={<SignInAuth />} />
-        <Route exact path='/sign-in/create' element={<CreateAccount />} />
+        <Route exact path='/sign-in/otp' element={<SignInAuth />} />
+        <Route exact path='/sign-in/oauth/:provider/:token' elements={handle_oauth_token()}/>
+        <Route exact path='/sign-up' element={<CreateAccount />} />
         <Route exact path='/sign-out' element={<SignOut/>} />
 
         <Route path='/user/:subPage' element={<UserPage/>}/>

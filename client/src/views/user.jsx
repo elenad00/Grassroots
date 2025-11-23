@@ -1,5 +1,5 @@
 import artistData from "../page-content/artists.json"
-import { GetFullUserInformation } from '../functionality/api';
+import { GetFullUserInformation } from '../api/api';
 import { NavButton, PageContent, PageElement } from "../components/multiuse-elements";
 import styles from "../css/user-pages.module.css";
 import multiuseStyles from "../components/css/multiuse.module.css"
